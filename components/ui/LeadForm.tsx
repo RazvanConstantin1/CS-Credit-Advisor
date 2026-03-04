@@ -2,6 +2,12 @@
 
 import { useState, FormEvent } from "react";
 import { ShieldCheck, Loader2 } from "lucide-react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 interface LeadFormProps {
   dark?: boolean;
@@ -11,11 +17,14 @@ interface LeadFormProps {
 
 type CreditStatus = "" | "good" | "medium" | "difficult" | "unknown";
 type NegativeRecord = "" | "yes" | "no" | "unsure";
-type LoanType = "" | "personal" | "mortgage" | "unsure";
+type LoanType = "" | "personal" | "mortgage";
+type JobSeniority = "" | "under6m" | "6to12m" | "1to3y" | "over5y";
+type NetIncome = "" | "minimum" | "3000to5000" | "5000to7000" | "7000to10000" | "over10000";
 
 export default function LeadForm({ dark = false, compact = false, formId }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -23,6 +32,8 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const [creditStatus, setCreditStatus] = useState<CreditStatus>("");
   const [negative, setNegative] = useState<NegativeRecord>("");
   const [loanType, setLoanType] = useState<LoanType>("");
+  const [jobSeniority, setJobSeniority] = useState<JobSeniority>("");
+  const [netIncome, setNetIncome] = useState<NetIncome>("");
   const [notes, setNotes] = useState("");
 
   const inputBase = [
@@ -38,11 +49,31 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !creditStatus || !loanType) return;
+    if (!name || !phone || !creditStatus || !loanType || !jobSeniority || !netIncome) return;
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    setErrorMsg("");
+
+    const { error } = await supabase.from("leads").insert({
+      name,
+      phone,
+      email: email || null,
+      credit_status: creditStatus,
+      negative_record: negative || null,
+      loan_type: loanType,
+      job_seniority: jobSeniority,
+      net_income: netIncome,
+      notes: notes || null,
+      form_id: formId,
+    });
+
     setLoading(false);
-    setSubmitted(true);
+
+    if (error) {
+      console.error("Eroare Supabase:", error.message);
+      setErrorMsg("A apărut o eroare. Te rugăm să încerci din nou.");
+    } else {
+      setSubmitted(true);
+    }
   };
 
   if (submitted) {
@@ -196,7 +227,49 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           </option>
           <option value="personal">Credit Personal</option>
           <option value="mortgage">Credit Ipotecar / Imobiliar</option>
-          <option value="unsure">Nu știu încă</option>
+        </select>
+      </div>
+
+      {/* Job seniority */}
+      <div>
+        <label className={labelClass}>
+          Vechime la Actualul Loc de Muncă <span className="text-gold">*</span>
+        </label>
+        <select
+          value={jobSeniority}
+          onChange={(e) => setJobSeniority(e.target.value as JobSeniority)}
+          required
+          className={`${inputBase} custom-select cursor-pointer`}
+        >
+          <option value="" disabled>
+            Selectează vechimea...
+          </option>
+          <option value="under6m">Mai puțin de 6 luni</option>
+          <option value="6to12m">6 – 12 luni</option>
+          <option value="1to3y">1 – 3 ani</option>
+          <option value="over5y">Peste 5 ani</option>
+        </select>
+      </div>
+
+      {/* Net income */}
+      <div>
+        <label className={labelClass}>
+          Venit Net <span className="text-gold">*</span>
+        </label>
+        <select
+          value={netIncome}
+          onChange={(e) => setNetIncome(e.target.value as NetIncome)}
+          required
+          className={`${inputBase} custom-select cursor-pointer`}
+        >
+          <option value="" disabled>
+            Selectează venitul net...
+          </option>
+          <option value="minimum">Salariu minim pe economie</option>
+          <option value="3000to5000">3.000 – 5.000 lei</option>
+          <option value="5000to7000">5.000 – 7.000 lei</option>
+          <option value="7000to10000">7.000 – 10.000 lei</option>
+          <option value="over10000">Peste 10.000 lei</option>
         </select>
       </div>
 
@@ -217,6 +290,11 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
             className={`${inputBase} resize-none`}
           />
         </div>
+      )}
+
+      {/* Error message */}
+      {errorMsg && (
+        <p className="text-red-500 text-[12px] text-center">{errorMsg}</p>
       )}
 
       {/* Submit */}

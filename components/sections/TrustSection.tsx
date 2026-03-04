@@ -33,7 +33,6 @@ const stats = [
 
 const badges = [
   { dot: true, label: "Broker Autorizat" },
-  { dot: true, label: "Date Criptate SSL" },
   { dot: true, label: "GDPR Conform" },
   { dot: true, label: "Serviciu Gratuit" },
 ];
@@ -68,7 +67,7 @@ export default function TrustSection() {
             {benefits.map((b, i) => (
               <div
                 key={i}
-                className="group flex gap-4 items-start p-5 rounded-2xl border-[1.5px] border-[#eaecf0] bg-[#fafbfc] hover:border-gold hover:bg-gold-pale hover:translate-x-1 transition-all duration-300 cursor-default"
+                className="group flex gap-4 items-center p-5 rounded-2xl border-[1.5px] border-[#eaecf0] bg-[#fafbfc] hover:border-gold hover:bg-gold-pale hover:translate-x-1 transition-all duration-300 cursor-default"
               >
                 <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-navy to-navy-light flex items-center justify-center text-xl flex-shrink-0">
                   {b.icon}
@@ -96,7 +95,7 @@ export default function TrustSection() {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-10">
                 {badges.map((b, i) => (
                   <div
                     key={i}
