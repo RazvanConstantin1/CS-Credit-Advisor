@@ -16,12 +16,21 @@ interface LeadFormProps {
 }
 
 type CreditStatus = "" | "good" | "medium" | "difficult" | "unknown";
-type NegativeRecord = "" | "yes" | "no" | "unsure";
 type LoanType = "" | "personal" | "mortgage";
 type JobSeniority = "" | "under6m" | "6to12m" | "1to3y" | "over5y";
-type NetIncome = "" | "minimum" | "3000to5000" | "5000to7000" | "7000to10000" | "over10000";
+type NetIncome =
+  | ""
+  | "minimum"
+  | "3000to5000"
+  | "5000to7000"
+  | "7000to10000"
+  | "over10000";
 
-export default function LeadForm({ dark = false, compact = false, formId }: LeadFormProps) {
+export default function LeadForm({
+  dark = false,
+  compact = false,
+  formId,
+}: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -30,7 +39,6 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [creditStatus, setCreditStatus] = useState<CreditStatus>("");
-  const [negative, setNegative] = useState<NegativeRecord>("");
   const [loanType, setLoanType] = useState<LoanType>("");
   const [jobSeniority, setJobSeniority] = useState<JobSeniority>("");
   const [netIncome, setNetIncome] = useState<NetIncome>("");
@@ -49,7 +57,15 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !creditStatus || !loanType || !jobSeniority || !netIncome) return;
+    if (
+      !name ||
+      !phone ||
+      !creditStatus ||
+      !loanType ||
+      !jobSeniority ||
+      !netIncome
+    )
+      return;
     setLoading(true);
     setErrorMsg("");
 
@@ -58,7 +74,6 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
       phone,
       email: email || null,
       credit_status: creditStatus,
-      negative_record: negative || null,
       loan_type: loanType,
       job_seniority: jobSeniority,
       net_income: netIncome,
@@ -69,8 +84,13 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
     setLoading(false);
 
     if (error) {
-      console.error("Eroare Supabase:", error.message);
-      setErrorMsg("A apărut o eroare. Te rugăm să încerci din nou.");
+      console.error(
+        "Eroare Supabase:",
+        error.message,
+        error.details,
+        error.hint
+      );
+      setErrorMsg(`Eroare: ${error.message}`);
     } else {
       setSubmitted(true);
     }
@@ -80,47 +100,24 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
     return (
       <div className="flex flex-col items-center justify-center py-10 text-center gap-3 px-4">
         <div className="text-5xl mb-2">✅</div>
-        <h4 className={`font-playfair text-xl font-bold ${dark ? "text-white" : "text-navy"}`}>
+        <h4
+          className={`font-playfair text-xl font-bold ${
+            dark ? "text-white" : "text-navy"
+          }`}
+        >
           Cerere înregistrată!
         </h4>
-        <p className={`text-sm leading-relaxed max-w-xs ${dark ? "text-white/60" : "text-muted"}`}>
-          Un consultant CS Credit Advisor te va contacta în maxim 24 de ore lucrătoare.
+        <p
+          className={`text-sm leading-relaxed max-w-xs ${
+            dark ? "text-white/60" : "text-muted"
+          }`}
+        >
+          Un consultant CS Credit Advisor te va contacta în maxim 24 de ore
+          lucrătoare.
         </p>
       </div>
     );
   }
-
-  const radioOpt = (
-    id: string,
-    value: NegativeRecord,
-    label: string,
-    icon: string
-  ) => (
-    <div className="flex-1 min-w-0">
-      <input
-        type="radio"
-        id={`${formId}-${id}`}
-        name={`${formId}-negative`}
-        value={value}
-        checked={negative === value}
-        onChange={() => setNegative(value)}
-        className="sr-only peer"
-      />
-      <label
-        htmlFor={`${formId}-${id}`}
-        className={[
-          "flex items-center justify-center gap-1.5 py-2.5 px-1 rounded-lg border-[1.5px] cursor-pointer text-[12.5px] font-medium transition-all duration-200 select-none",
-          "peer-checked:border-gold peer-checked:bg-gold-pale peer-checked:text-navy peer-checked:font-semibold",
-          dark
-            ? "border-white/15 text-white/60 bg-white/5 hover:border-white/30"
-            : "border-[#e0e4ea] text-muted bg-[#fafbfc] hover:border-gold/50",
-        ].join(" ")}
-      >
-        <span>{icon}</span>
-        <span>{label}</span>
-      </label>
-    </div>
-  );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3.5" noValidate>
@@ -161,7 +158,11 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
         <div>
           <label className={labelClass}>
             Email{" "}
-            <span className={`font-normal text-[11px] ${dark ? "text-white/40" : "text-muted"}`}>
+            <span
+              className={`font-normal text-[11px] ${
+                dark ? "text-white/40" : "text-muted"
+              }`}
+            >
               (opțional, recomandat)
             </span>
           </label>
@@ -192,24 +193,12 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           </option>
           <option value="good">Bun — fără probleme de plată</option>
           <option value="medium">Mediu — câteva întârzieri mici</option>
-          <option value="difficult">Dificil — întârzieri sau credite restante</option>
-          <option value="unknown">Nu știu / nu am verificat</option>
+          <option value="difficult">
+            Dificil — întârzieri sau credite restante
+          </option>
+          <option value="unknown">Nu am niciun credit activ</option>
         </select>
       </div>
-
-      {/* Negative records */}
-      {!compact && (
-        <div>
-          <label className={labelClass}>
-            Înregistrări Negative în Biroul de Credit <span className="text-gold">*</span>
-          </label>
-          <div className="flex gap-2">
-            {radioOpt("yes", "yes", "Da, am", "✗")}
-            {radioOpt("no", "no", "Nu am", "✓")}
-            {radioOpt("unsure", "unsure", "Nu știu", "?")}
-          </div>
-        </div>
-      )}
 
       {/* Loan type */}
       <div>
@@ -225,7 +214,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           <option value="" disabled>
             Selectează tipul de credit...
           </option>
-          <option value="personal">Credit Personal</option>
+          <option value="personal">Credit De Nevoi Personale</option>
           <option value="mortgage">Credit Ipotecar / Imobiliar</option>
         </select>
       </div>
@@ -278,7 +267,11 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
         <div>
           <label className={labelClass}>
             Mențiuni Suplimentare{" "}
-            <span className={`font-normal text-[11px] ${dark ? "text-white/40" : "text-muted"}`}>
+            <span
+              className={`font-normal text-[11px] ${
+                dark ? "text-white/40" : "text-muted"
+              }`}
+            >
               (opțional)
             </span>
           </label>
@@ -317,11 +310,18 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
       <div className="flex items-start gap-2 pt-1">
         <ShieldCheck
           size={14}
-          className={`mt-0.5 flex-shrink-0 ${dark ? "text-white/40" : "text-muted"}`}
+          className={`mt-0.5 flex-shrink-0 ${
+            dark ? "text-white/40" : "text-muted"
+          }`}
         />
-        <p className={`text-[11px] leading-relaxed ${dark ? "text-white/40" : "text-muted"}`}>
-          Datele tale sunt în siguranță și nu vor fi partajate cu terți fără consimțământul tău.
-          Serviciul nostru este complet confidențial și gratuit.
+        <p
+          className={`text-[11px] leading-relaxed ${
+            dark ? "text-white/40" : "text-muted"
+          }`}
+        >
+          Datele tale sunt în siguranță și nu vor fi partajate cu terți fără
+          consimțământul tău. Serviciul nostru este complet confidențial și
+          gratuit.
         </p>
       </div>
     </form>
