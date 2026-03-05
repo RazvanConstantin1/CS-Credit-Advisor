@@ -7,6 +7,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
+import CookieBanner from "@/components/ui/CookieBanner";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <CookieBanner />
     </main>
   );
 }

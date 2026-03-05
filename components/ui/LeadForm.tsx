@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { ShieldCheck, Loader2 } from "lucide-react";
 import { createClient } from "@supabase/supabase-js";
+import Link from "next/link";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -19,6 +20,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [gdprConsent, setGdprConsent] = useState(false);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -43,19 +45,24 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name || !phone || !creditStatus || !loanType || !jobSeniority || !netIncome) return;
+    if (!gdprConsent) {
+      setErrorMsg("Trebuie să accepți prelucrarea datelor pentru a continua.");
+      return;
+    }
     setLoading(true);
     setErrorMsg("");
 
     const { error } = await supabase.from("leads").insert({
-      name,
-      phone,
+      nume: name,
+      numar_de_telefon: phone,
       email: email || null,
-      credit_status: creditStatus,
-      loan_type: loanType,
-      job_seniority: jobSeniority,
-      net_income: netIncome,
+      situatia_curenta: creditStatus,
+      tipul_creditului: loanType,
+      vechime: jobSeniority,
+      venit_net: netIncome,
       notes: notes || null,
       form_id: formId,
+      gdpr_consent: gdprConsent,
     });
 
     setLoading(false);
@@ -147,9 +154,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           required
           className={`${inputBase} custom-select cursor-pointer`}
         >
-          <option value="" disabled>
-            Selectează situația ta...
-          </option>
+          <option value="" disabled>Selectează situația ta...</option>
           <option value="Bun — fără probleme de plată">Bun — fără probleme de plată</option>
           <option value="Mediu — câteva întârzieri mici">Mediu — câteva întârzieri mici</option>
           <option value="Dificil — întârzieri sau credite restante">Dificil — întârzieri sau credite restante</option>
@@ -168,9 +173,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           required
           className={`${inputBase} custom-select cursor-pointer`}
         >
-          <option value="" disabled>
-            Selectează tipul de credit...
-          </option>
+          <option value="" disabled>Selectează tipul de credit...</option>
           <option value="Credit Personal">Credit Personal</option>
           <option value="Credit Ipotecar / Imobiliar">Credit Ipotecar / Imobiliar</option>
         </select>
@@ -187,9 +190,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           required
           className={`${inputBase} custom-select cursor-pointer`}
         >
-          <option value="" disabled>
-            Selectează vechimea...
-          </option>
+          <option value="" disabled>Selectează vechimea...</option>
           <option value="Mai puțin de 6 luni">Mai puțin de 6 luni</option>
           <option value="6 – 12 luni">6 – 12 luni</option>
           <option value="1 – 3 ani">1 – 3 ani</option>
@@ -208,9 +209,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           required
           className={`${inputBase} custom-select cursor-pointer`}
         >
-          <option value="" disabled>
-            Selectează venitul net...
-          </option>
+          <option value="" disabled>Selectează venitul net...</option>
           <option value="Salariu minim pe economie">Salariu minim pe economie</option>
           <option value="3.000 – 5.000 lei">3.000 – 5.000 lei</option>
           <option value="5.000 – 7.000 lei">5.000 – 7.000 lei</option>
@@ -237,6 +236,47 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           />
         </div>
       )}
+
+      {/* GDPR Consent */}
+      <div className={`flex items-start gap-3 p-3 rounded-lg border-[1.5px] transition-colors duration-200 ${
+        gdprConsent
+          ? "border-gold/50 bg-gold/5"
+          : dark ? "border-white/15 bg-white/5" : "border-[#e0e4ea] bg-[#fafbfc]"
+      }`}>
+        <input
+          type="checkbox"
+          id={`${formId}-gdpr`}
+          checked={gdprConsent}
+          onChange={(e) => {
+            setGdprConsent(e.target.checked);
+            if (e.target.checked) setErrorMsg("");
+          }}
+          className="mt-0.5 w-4 h-4 accent-[#C9A84C] cursor-pointer flex-shrink-0"
+        />
+        <label
+          htmlFor={`${formId}-gdpr`}
+          className={`text-[12px] leading-relaxed cursor-pointer ${dark ? "text-white/60" : "text-muted"}`}
+        >
+          Sunt de acord cu prelucrarea datelor mele cu caracter personal de către ACS Credit Advisor S.R.L.
+          în scopul soluționării solicitării mele de creditare, conform{" "}
+          <Link
+            href="/politica-confidentialitate"
+            target="_blank"
+            className="text-gold underline hover:text-gold/80 transition-colors"
+          >
+            Politicii de Confidențialitate
+          </Link>{" "}
+          și{" "}
+          <Link
+            href="/termeni-conditii"
+            target="_blank"
+            className="text-gold underline hover:text-gold/80 transition-colors"
+          >
+            Termenilor și Condițiilor
+          </Link>
+          . <span className="text-gold">*</span>
+        </label>
+      </div>
 
       {/* Error message */}
       {errorMsg && (
