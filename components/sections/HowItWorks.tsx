@@ -37,11 +37,13 @@ export default function HowItWorks() {
             <SectionLabel center>Procesul Simplu</SectionLabel>
           </div>
           <h2 className="font-playfair font-bold text-[1.9rem] sm:text-[2.4rem] lg:text-[2.8rem] leading-[1.2] tracking-[-0.3px] text-navy mb-4">
-            4 Pași Simpli spre<br />Creditul Tău
+            4 Pași Simpli spre
+            <br />
+            Creditul Tău
           </h2>
           <p className="text-muted text-base sm:text-[1.05rem] leading-[1.75] max-w-lg mx-auto">
-            De la prima completare a formularului până la aprobarea creditului — totul este simplu
-            și transparent.
+            De la prima completare a formularului până la aprobarea creditului —
+            totul este simplu și transparent.
           </p>
         </FadeIn>
 
@@ -59,10 +61,14 @@ export default function HowItWorks() {
                 )}
               </div>
               {/* Card */}
-              <div className="bg-white border-[1.5px] border-[#eaecf0] rounded-2xl p-5 mb-4 flex-1 hover:border-gold hover:shadow-card-hover transition-all duration-300">
+              <div className="bg-white text-center border-[1.5px] border-[#eaecf0] rounded-2xl p-5 mb-4 flex-1 hover:border-gold hover:shadow-card-hover transition-all duration-300">
                 <div className="text-2xl mb-2">{step.icon}</div>
-                <h4 className="font-playfair font-bold text-navy text-[1rem] mb-1.5">{step.title}</h4>
-                <p className="text-[13.5px] text-muted leading-relaxed">{step.desc}</p>
+                <h4 className="font-playfair font-bold text-navy text-[1rem] mb-1.5">
+                  {step.title}
+                </h4>
+                <p className="text-[13.5px] text-muted leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             </div>
           ))}
@@ -83,8 +89,12 @@ export default function HowItWorks() {
                   {step.num}
                 </div>
                 <div className="text-[28px] mb-3">{step.icon}</div>
-                <h4 className="font-playfair font-bold text-navy text-[1rem] mb-2">{step.title}</h4>
-                <p className="text-[13.5px] text-muted leading-relaxed">{step.desc}</p>
+                <h4 className="font-playfair font-bold text-navy text-[1rem] mb-2">
+                  {step.title}
+                </h4>
+                <p className="text-[13.5px] text-muted leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             ))}
           </div>

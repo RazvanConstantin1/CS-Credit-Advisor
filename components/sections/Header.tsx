@@ -23,7 +23,9 @@ export default function Header() {
 
   // Close menu on resize
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
+    const onResize = () => {
+      if (window.innerWidth >= 768) setMenuOpen(false);
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -31,7 +33,9 @@ export default function Header() {
   // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const handleNavClick = () => setMenuOpen(false);
@@ -41,7 +45,7 @@ export default function Header() {
       <header
         className={[
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          "bg-navy/97 backdrop-blur-md border-b border-gold/20",
+          "bg-navy/95 backdrop-blur-sm border-b border-gold/20",
           scrolled ? "shadow-[0_4px_40px_rgba(0,0,0,0.4)]" : "",
         ].join(" ")}
       >
@@ -56,7 +60,7 @@ export default function Header() {
                 CS Credit Advisor
               </span>
               <span className="text-[9px] sm:text-[10px] text-gold tracking-[2px] uppercase font-medium">
-                Brokeraj de Credite
+                Broker de Credite
               </span>
             </div>
           </Link>
@@ -139,7 +143,7 @@ export default function Header() {
           <div className="mt-5 flex items-center justify-center gap-6 text-[11px] text-white/40 tracking-wider uppercase">
             <span>Serviciu Gratuit</span>
             <span>·</span>
-            <span>5 Bănci Partenere</span>
+            <span>Top 5 Bănci Partenere</span>
             <span>·</span>
             <span>GDPR</span>
           </div>
