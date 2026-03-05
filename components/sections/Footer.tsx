@@ -12,8 +12,12 @@ export default function Footer() {
               CS
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-playfair font-bold text-white text-[15px]">CS Credit Advisor</span>
-              <span className="text-[9px] text-gold tracking-[2px] uppercase">Brokeraj de Credite</span>
+              <span className="font-playfair font-bold text-white text-[15px]">
+                CS Credit Advisor
+              </span>
+              <span className="text-[9px] text-gold tracking-[2px] uppercase">
+                Broker de Credite
+              </span>
             </div>
           </div>
 
@@ -40,10 +44,15 @@ export default function Footer() {
         <div className="border-t border-white/8 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-[12px] text-white/30 text-center sm:text-left">
-              © {new Date().getFullYear()} CS Credit Advisor. Broker de credite autorizat. Toate drepturile rezervate.
+              © {new Date().getFullYear()} CS Credit Advisor. Broker de credite
+              autorizat. Toate drepturile rezervate.
             </p>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
-              {["Politică de Confidențialitate", "Termeni și Condiții", "GDPR"].map((l) => (
+              {[
+                "Politică de Confidențialitate",
+                "Termeni și Condiții",
+                "GDPR",
+              ].map((l) => (
                 <Link
                   key={l}
                   href="#"
