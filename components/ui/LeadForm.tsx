@@ -162,7 +162,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           <option value="" disabled>Selectează situația ta...</option>
           <option value="Bun — fără probleme de plată">Bun — fără probleme de plată</option>
           <option value="Mediu — câteva întârzieri mici">Mediu — câteva întârzieri mici</option>
-          <option value="Dificil — întârzieri sau credite restante">Dificil — întârzieri sau credite restante</option>
+          <option value="Am un singur credit activ">Am un singur credit activ</option>
           <option value="Nu am niciun credit activ">Nu am niciun credit activ</option>
         </select>
       </div>

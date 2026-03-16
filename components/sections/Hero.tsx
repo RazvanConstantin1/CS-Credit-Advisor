@@ -35,15 +35,15 @@ export default function Hero() {
 
           {/* Headline */}
           <h1 className="font-playfair font-bold text-white leading-[1.15] tracking-[-0.5px] text-[2.2rem] sm:text-[2.8rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-6">
-            Creditul potrivit,<br />
-            <em className="text-gold italic">indiferent de trecut</em>
+            Creditul perfect,<br />
+            <em className="text-gold italic">găsit rapid pentru tine</em>
           </h1>
 
           {/* Sub */}
           <p className="text-white/70 text-base sm:text-lg leading-[1.75] mb-8 max-w-lg">
             Fie că ai nevoie de un credit de nevoi personale sau ipotecar, echipa CS Credit
-            Advisor te ghidează profesionist prin fiecare pas — chiar dacă ai un
-            istoric de credit dificil sau înregistrări negative.
+            Advisor compară ofertele celor mai mari bănci din România și îți negociază
+            cele mai bune condiții — rapid, transparent și fără costuri.
           </p>
 
           {/* Free info card */}

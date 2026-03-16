@@ -12,8 +12,8 @@ const faqs = [
     a: "Da, 100% gratuit pentru clienți. Suntem remunerați exclusiv de băncile partenere, nu de clienți. Nu există taxe ascunse, comisioane sau plăți de orice fel din partea ta.",
   },
   {
-    q: "Pot obține un credit dacă am înregistrări negative la Biroul de Credit?",
-    a: "Da, în multe cazuri da. Depinde de tipul și vechimea înregistrărilor negative. Echipa noastră analizează situația ta și identifică băncile sau produsele care acceptă profiluri cu istorii dificile. Nu renunța fără să consulți un specialist!",
+    q: "Cum mă ajutați să obțin cea mai bună dobândă?",
+    a: "Comparăm în timp real ofertele tuturor celor 5 bănci partenere — BCR, BRD, Banca Transilvania, ING și Raiffeisen. Negociem direct condiții preferențiale datorită volumului de dosare procesate. Astfel primești o ofertă optimizată, fără să pierzi timp mergând bancă cu bancă.",
   },
   {
     q: "Cât durează procesul de aprobare a unui credit?",

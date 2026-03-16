@@ -12,6 +12,7 @@ export interface Article {
   readTime: string;
   category: "Ghiduri" | "Știri" | "Sfaturi";
   featured?: boolean;
+  coverImage?: string;
   sections: ArticleSection[];
   conclusion: string;
 }

@@ -10,7 +10,7 @@ const testimonials = [
     tag: "Credit de Nevoi Personale – 95.000 RON",
     stars: 5,
     quote:
-      "Aveam un dosar respins de două bănci din cauza unui credit vechi neachitat. CS Credit Advisor a găsit o soluție în mai puțin de o săptămână. Profesionalism rar întâlnit!",
+      "Voiam să obțin cea mai bună dobândă de pe piață, dar nu aveam timp să compar singur ofertele. CS Credit Advisor mi-a prezentat 3 opțiuni în mai puțin de o săptămână. Profesionalism rar întâlnit!",
   },
   {
     image: "/download%20(1).jpeg",
@@ -28,7 +28,7 @@ const testimonials = [
     tag: "Credit de Nevoi Personale – 75.000 RON",
     stars: 5,
     quote:
-      "Nu credeam că mai pot lua un credit după ce am intrat în insolvență acum câțiva ani. Consilierii de la CS m-au ajutat să înțeleg opțiunile și am obținut în final aprobarea.",
+      "Am vrut să-mi refinanțez creditul existent la o dobândă mai mică. Consilierii de la CS au comparat toate ofertele și am economisit peste 200 lei pe lună. Merită din plin!",
   },
   {
     image: "/download%20(2).jpeg",
@@ -55,7 +55,7 @@ const testimonials = [
     tag: "Credit de Nevoi Personale – 80.000 RON",
     stars: 5,
     quote:
-      "Aveam scoring mic și nu știam că există soluții pentru mine. Consultantul meu de la CS a fost empatic, răbdător și mi-a găsit o ofertă potrivită. Mulțumesc!",
+      "Tot procesul a fost incredibil de simplu — de la completarea formularului până la semnarea contractului. Consultantul meu de la CS s-a ocupat de tot. Nu m-am stresat deloc!",
   },
 ];
 

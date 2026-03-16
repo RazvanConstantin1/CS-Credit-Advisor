@@ -9,8 +9,8 @@ const features = [
   },
   {
     icon: "🛡️",
-    title: "Suport Istorii Dificile",
-    desc: "Nu te descurajăm dacă ai înregistrări negative — cunoaștem soluțiile chiar și pentru situații complexe.",
+    title: "Acces la Oferte Exclusive",
+    desc: "Negociem condiții preferențiale datorită parteneriatelor directe cu băncile — dobânzi și comisioane la care nu ai acces singur.",
   },
   {
     icon: "⚡",

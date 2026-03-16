@@ -6,7 +6,7 @@ const promises = [
   "Consultație personalizată 100% gratuită",
   "Nicio interogare la Biroul de Credit fără acordul tău",
   "Acces la ofertele celor mai mari 5 bănci din România",
-  "Suport dedicat chiar și pentru istorii de credit dificile",
+  "Comparare rapidă între cele mai mari 5 bănci — oferte actualizate zilnic",
   "Răspuns în maxim 24 de ore lucrătoare",
 ];
 
@@ -35,9 +35,9 @@ export default function FinalCTA() {
               Te Așteaptă
             </h2>
             <p className="text-white/65 text-base leading-[1.75] mb-8">
-              Nu lăsa situația financiară să te oprească. Indiferent de
-              istoricul tău de credit, avem o soluție pentru tine — și totul
-              este complet gratuit.
+              Nu pierde timp comparând singur ofertele băncilor. Noi facem
+              munca pentru tine și îți negociem cele mai bune condiții — totul
+              complet gratuit.
             </p>
             <ul className="space-y-3.5">
               {promises.map((p, i) => (
