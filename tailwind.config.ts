@@ -14,13 +14,10 @@ const config: Config = {
       },
       colors: {
         navy: {
-          DEFAULT: "#0d1b2a",
-          mid: "#162032",
-          light: "#1e2f45",
-        },
-        forest: {
-          DEFAULT: "#1a3a2a",
-          light: "#1f4530",
+          DEFAULT: "#0d2060",
+          dark: "#081545",
+          mid: "#162480",
+          light: "#1e3590",
         },
         gold: {
           DEFAULT: "#c9a84c",
@@ -30,11 +27,11 @@ const config: Config = {
         },
         charcoal: "#2c3e50",
         muted: "#6b7a8d",
-        "off-white": "#f8f6f1",
+        "off-white": "#f5f0e8",
       },
       backgroundImage: {
         "hero-gradient":
-          "radial-gradient(ellipse 80% 60% at 20% 50%, rgba(26,58,42,0.55) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 85% 20%, rgba(201,168,76,0.12) 0%, transparent 60%), linear-gradient(160deg, #0d1b2a 0%, #0a1520 100%)",
+          "radial-gradient(ellipse 80% 60% at 20% 50%, rgba(30,53,144,0.5) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 85% 20%, rgba(201,168,76,0.12) 0%, transparent 60%), linear-gradient(160deg, #0d2060 0%, #081545 100%)",
         "gold-gradient": "linear-gradient(135deg, #b8922a, #c9a84c, #e0c070)",
         "card-shimmer":
           "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",

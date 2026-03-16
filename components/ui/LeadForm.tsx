@@ -52,27 +52,32 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
     setLoading(true);
     setErrorMsg("");
 
-    const { error } = await supabase.from("leads").insert({
-      nume: name,
-      numar_de_telefon: phone,
-      email: email || null,
-      situatia_curenta: creditStatus,
-      tipul_creditului: loanType,
-      vechime: jobSeniority,
-      venit_net: netIncome,
-      notes: notes || null,
-      form_id: formId,
-      gdpr_consent: gdprConsent,
-    });
+    try {
+      const { error } = await supabase.from("leads").insert({
+        nume: name,
+        numar_de_telefon: phone,
+        email: email || null,
+        situatia_curenta: creditStatus,
+        tipul_creditului: loanType,
+        vechime: jobSeniority,
+        venit_net: netIncome,
+        notes: notes || null,
+        form_id: formId,
+        gdpr_consent: gdprConsent,
+      });
+
+      if (error) {
+        console.error("Eroare Supabase:", error.message, error.details, error.hint);
+        setErrorMsg("A apărut o eroare la trimitere. Vă rugăm să ne contactați direct la telefon.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error("Eroare rețea:", err);
+      setErrorMsg("Conexiunea a eșuat. Verificați internetul sau contactați-ne direct la telefon.");
+    }
 
     setLoading(false);
-
-    if (error) {
-      console.error("Eroare Supabase:", error.message, error.details, error.hint);
-      setErrorMsg(`Eroare: ${error.message}`);
-    } else {
-      setSubmitted(true);
-    }
   };
 
   if (submitted) {

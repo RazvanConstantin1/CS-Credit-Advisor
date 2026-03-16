@@ -14,7 +14,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 20% 50%, rgba(26,58,42,0.55) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 85% 20%, rgba(201,168,76,0.12) 0%, transparent 60%), linear-gradient(160deg, #0d1b2a 0%, #0a1520 100%)",
+            "radial-gradient(ellipse 80% 60% at 20% 50%, rgba(30,53,144,0.5) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 85% 20%, rgba(201,168,76,0.12) 0%, transparent 60%), linear-gradient(160deg, #0d2060 0%, #081545 100%)",
         }}
       />
 
@@ -35,10 +35,8 @@ export default function Hero() {
 
           {/* Headline */}
           <h1 className="font-playfair font-bold text-white leading-[1.15] tracking-[-0.5px] text-[2.2rem] sm:text-[2.8rem] lg:text-[3.2rem] xl:text-[3.6rem] mb-6">
-            Creditare{" "}
-            <em className="text-gold not-italic">Inteligentă</em>,<br />
-            Indiferent de<br />
-            Istoricul Tău
+            Creditul potrivit,<br />
+            <em className="text-gold italic">indiferent de trecut</em>
           </h1>
 
           {/* Sub */}
@@ -49,7 +47,7 @@ export default function Hero() {
           </p>
 
           {/* Free info card */}
-          <div className="flex items-start gap-3.5 bg-forest/70 border border-gold/25 rounded-xl px-4 py-4 mb-8 max-w-lg">
+          <div className="flex items-start gap-3.5 bg-navy-light/70 border border-gold/25 rounded-xl px-4 py-4 mb-8 max-w-lg">
             <span className="text-2xl flex-shrink-0 mt-0.5">🎁</span>
             <p className="text-sm text-white/85 leading-relaxed">
               <strong className="text-gold-light">Consultație și intermediere 100% GRATUITĂ.</strong>

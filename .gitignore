@@ -3,3 +3,4 @@ echo ".next/" >> .gitignore
 echo ".env.local" >> .gitignore
 
 cat .gitignore | grep node_modules
+node_modules

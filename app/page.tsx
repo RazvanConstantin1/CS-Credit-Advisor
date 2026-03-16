@@ -1,8 +1,9 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import TrustSection from "@/components/sections/TrustSection";
-import HowItWorks from "@/components/sections/HowItWorks";
+import Calculator from "@/components/sections/Calculator";
 import About from "@/components/sections/About";
+import HowItWorks from "@/components/sections/HowItWorks";
 import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -15,8 +16,9 @@ export default function Home() {
       <Header />
       <Hero />
       <TrustSection />
-      <HowItWorks />
+      <Calculator />
       <About />
+      <HowItWorks />
       <Testimonials />
       <FAQ />
       <FinalCTA />

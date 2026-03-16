@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
-  { href: "#trust", label: "Beneficii" },
-  { href: "#how", label: "Cum Funcționează" },
-  { href: "#about", label: "Despre Noi" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#trust", label: "Beneficii" },
+  { href: "/#calculator", label: "Calculator" },
+  { href: "/#about", label: "Despre Noi" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {
@@ -49,17 +51,23 @@ export default function Header() {
           scrolled ? "shadow-[0_4px_40px_rgba(0,0,0,0.4)]" : "",
         ].join(" ")}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-[72px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[70px] sm:h-[78px]">
           {/* Logo */}
-          <Link href="#hero" className="flex items-center gap-3 flex-shrink-0">
-            <div className="w-9 h-9 sm:w-[42px] sm:h-[42px] rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center font-playfair font-bold text-base sm:text-lg text-navy flex-shrink-0">
-              CS
+          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+            <div className="flex-shrink-0 rounded-xl ring-2 ring-gold/60 shadow-[0_0_14px_rgba(201,168,76,0.35)] overflow-hidden">
+              <Image
+                src="/logo.jpg"
+                alt="CS Credit Advisor"
+                width={54}
+                height={54}
+                className="block"
+              />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-playfair font-bold text-[15px] sm:text-[17px] text-white tracking-[0.3px]">
+              <span className="font-playfair font-bold text-[16px] sm:text-[18px] text-white tracking-[0.3px] drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
                 CS Credit Advisor
               </span>
-              <span className="text-[9px] sm:text-[10px] text-gold tracking-[2px] uppercase font-medium">
+              <span className="text-[9px] sm:text-[11px] text-gold tracking-[2px] uppercase font-semibold">
                 Broker de Credite
               </span>
             </div>

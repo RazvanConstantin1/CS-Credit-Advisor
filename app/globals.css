@@ -22,7 +22,7 @@ html {
 
 body {
   font-family: var(--font-dm-sans);
-  background-color: #f8f6f1;
+  background-color: #f5f0e8;
   color: #0d1b2a;
   overflow-x: hidden;
 }
@@ -76,7 +76,7 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0d1b2a; }
+::-webkit-scrollbar-track { background: #0d2060; }
 ::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
 
 /* Touch-friendly tap targets on mobile */

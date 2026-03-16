@@ -20,7 +20,7 @@ export default function FinalCTA() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 70% at 50% 100%, rgba(26,58,42,0.6) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 70% at 50% 100%, rgba(30,53,144,0.5) 0%, transparent 70%)",
         }}
       />
 
