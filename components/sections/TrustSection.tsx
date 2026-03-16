@@ -1,14 +1,13 @@
 import FadeIn from "@/components/ui/FadeIn";
 
 const stats = [
-  { num: "1.200+", label: "Clienți Mulțumiți" },
+  { num: "800+", label: "Clienți Mulțumiți" },
   { num: "94%", label: "Rată de Aprobare" },
-  { num: "5", label: "Bănci Partenere" },
   { num: "0 RON", label: "Cost pentru Tine" },
   { num: "8+", label: "Ani Experiență" },
 ];
 
-const badges = ["Broker Autorizat", "GDPR Conform", "Serviciu Gratuit"];
+const badges = ["Broker Autorizat", "GDPR Conform", "Serviciu Gratuit", "Multiple Bănci Partenere"];
 
 export default function TrustSection() {
   return (

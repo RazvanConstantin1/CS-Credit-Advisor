@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: "credit, broker credit, credit de nevoi personale, credit ipotecar, IFN, Romania, CS Credit Advisor",
   openGraph: {
     title: "CS Credit Advisor",
-    description: "Serviciu de brokeraj credite 100% gratuit. Parteneri cu top 5 bănci din România.",
+    description: "Serviciu de brokeraj credite 100% gratuit. Parteneri cu principalele bănci din România.",
     type: "website",
   },
 };

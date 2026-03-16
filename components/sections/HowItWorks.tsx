@@ -18,7 +18,7 @@ const steps = [
     num: "3",
     icon: "🔍",
     title: "Analiză și Ofertă",
-    desc: "Identificăm cele mai bune oferte din rețeaua noastră de 5 bănci și îți prezentăm opțiunile clar și transparent.",
+    desc: "Identificăm cele mai bune oferte din rețeaua noastră de bănci partenere și îți prezentăm opțiunile clar și transparent.",
   },
   {
     num: "4",

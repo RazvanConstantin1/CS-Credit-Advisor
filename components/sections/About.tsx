@@ -5,7 +5,7 @@ const features = [
   {
     icon: "🎯",
     title: "Soluții Personalizate",
-    desc: "Analizăm profilul tău financiar și identificăm oferta optimă din rețeaua celor 5 bănci partenere.",
+    desc: "Analizăm profilul tău financiar și identificăm oferta optimă din rețeaua noastră de bănci partenere.",
   },
   {
     icon: "🛡️",
@@ -19,8 +19,8 @@ const features = [
   },
   {
     icon: "🏦",
-    title: "Top 5 Bănci Partenere",
-    desc: "Acces direct la BCR, BRD, Banca Transilvania, ING și Raiffeisen — cele mai competitive dobânzi.",
+    title: "Principalele Bănci din România",
+    desc: "Acces direct la cele mai mari bănci din România — cele mai competitive dobânzi din piață.",
   },
   {
     icon: "🔒",

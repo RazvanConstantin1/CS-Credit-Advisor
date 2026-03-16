@@ -5,8 +5,8 @@ import LeadForm from "@/components/ui/LeadForm";
 const promises = [
   "Consultație personalizată 100% gratuită",
   "Nicio interogare la Biroul de Credit fără acordul tău",
-  "Acces la ofertele celor mai mari 5 bănci din România",
-  "Comparare rapidă între cele mai mari 5 bănci — oferte actualizate zilnic",
+  "Acces la ofertele principalelor bănci din România",
+  "Comparare rapidă între cele mai mari bănci — oferte actualizate zilnic",
   "Răspuns în maxim 24 de ore lucrătoare",
 ];
 

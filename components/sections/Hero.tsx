@@ -1,6 +1,6 @@
 import LeadForm from "@/components/ui/LeadForm";
 
-const banks = ["BCR", "BRD", "Banca Transilvania", "ING", "Raiffeisen"];
+const banks = ["Bănci de Top", "Dobânzi Competitive", "Oferte Actualizate", "Acces Direct", "Negociere Preferențială"];
 
 export default function Hero() {
   return (

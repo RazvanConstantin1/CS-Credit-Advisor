@@ -188,7 +188,7 @@ export const articles: Article[] = [
         heading: "1. Ce face un broker de credite în București",
         content: [
           "Un broker de credite este un intermediar financiar autorizat care lucrează în numele tău, nu al băncii. Rolul său este să analizeze piața creditelor, să compare ofertele băncilor partenere și să îți găsească soluția de finanțare optimă — fie că ai nevoie de un credit de nevoi personale, ipotecar, auto sau de refinanțare.",
-          "În București, un broker autorizat colaborează de regulă cu 8-15 bănci și instituții financiare. Aceasta înseamnă acces la o gamă largă de produse, de la creditele standard ale marilor bănci (BCR, BRD, Banca Transilvania, ING, Raiffeisen) până la ofertele de nișă ale băncilor mai mici, care pot fi surprinzător de competitive.",
+          "În București, un broker autorizat colaborează cu o rețea extinsă de bănci și instituții financiare. Aceasta înseamnă acces la o gamă largă de produse, de la creditele standard ale celor mai mari bănci din România până la ofertele de nișă ale băncilor mai mici, care pot fi surprinzător de competitive.",
           "Pe lângă compararea ofertelor, brokerul te asistă cu pregătirea dosarului, depunerea la bancă, urmărirea aprobării și rezolvarea eventualelor probleme care apar pe parcurs. Practic, ai un specialist dedicat care se ocupă de tot ce ține de credit, astfel încât tu să nu pierzi timp și energie.",
         ],
       },
@@ -205,7 +205,7 @@ export const articles: Article[] = [
         id: "broker-vs-direct-banca",
         heading: "3. Comparație: broker de credite vs. direct la bancă",
         content: [
-          "Acces la oferte: la bancă vezi o singură ofertă; prin broker compari 8-15 bănci simultan. Aceasta este cea mai importantă diferență, pentru că o variație de 1-2% la DAE poate însemna zeci de mii de lei pe durata unui credit ipotecar.",
+          "Acces la oferte: la bancă vezi o singură ofertă; prin broker compari toate băncile partenere simultan. Aceasta este cea mai importantă diferență, pentru că o variație de 1-2% la DAE poate însemna zeci de mii de lei pe durata unui credit ipotecar.",
           "Timp investit: dacă mergi singur, trebuie să vizitezi fizic 3-5 sucursale, să completezi formulare diferite și să aștepți oferta fiecărei bănci. Prin broker, depui un singur set de documente și primești comparația în 1-2 zile lucrătoare.",
           "Impact asupra scorului de credit: fiecare bancă la care aplici face o interogare la Biroul de Credit. Mai multe interogări într-un interval scurt îți scad scorul. Brokerul face o singură interogare, indiferent la câte bănci compară.",
           "Negociere: un client individual are putere limitată de negociere. Un broker cu sute de dosare procesate anual are relații directe cu echipele de risc ale băncilor și poate obține reduceri de dobândă sau eliminarea unor comisioane.",
@@ -555,7 +555,7 @@ export const articles: Article[] = [
     title: "Top Bănci România 2026: Comparație Dobânzi Credite Personale",
     coverImage: "/blog/financial_advisor_client_consultation_1.png",
     excerpt:
-      "Comparăm ofertele principale ale băncilor din România pentru credite personale în 2026: BCR, BRD, Banca Transilvania, ING și Raiffeisen.",
+      "Comparăm ofertele principalelor bănci din România pentru credite personale în 2026: dobânzi, comisioane și condiții de eligibilitate.",
     date: "3 Ianuarie 2026",
     readTime: "7 min",
     category: "Știri",
@@ -572,11 +572,10 @@ export const articles: Article[] = [
         id: "comparatie",
         heading: "2. Comparație orientativă",
         content: [
-          "BCR — una dintre cele mai mari bănci din România, oferă credite personale cu DAE între 8% și 14%. Procesul de aprobare este rapid pentru clienții existenți.",
-          "BRD — dobânzi competitive, cu produse special dedicate salariaților și pensionarilor. DAE orientativă: 8.5% - 15%.",
-          "Banca Transilvania — flexibilă în evaluarea dosarelor și cu una dintre cele mai bune experiențe digitale. DAE: 7.5% - 13%.",
-          "ING — 100% online, procese rapide, dar cu criterii mai stricte de eligibilitate. DAE: 8% - 12%.",
-          "Raiffeisen — oferte personalizate, comisioane mici, DAE orientativă: 8% - 14%.",
+          "Băncile mari cu prezență națională oferă credite personale cu DAE între 8% și 14%. Procesul de aprobare este rapid pentru clienții existenți, cu oferte preferențiale pentru virarea salariului.",
+          "Băncile cu tradiție pe piața locală oferă dobânzi competitive, cu produse special dedicate salariaților și pensionarilor. DAE orientativă: 8,5% - 15%.",
+          "Instituțiile cu experiență digitală avansată sunt flexibile în evaluarea dosarelor și oferă procese 100% online, dar cu criterii mai stricte de eligibilitate. DAE: 7,5% - 13%.",
+          "Băncile cu capital străin aduc oferte personalizate, comisioane mici și acces la programe internaționale. DAE orientativă: 8% - 14%.",
         ],
       },
       {
@@ -589,7 +588,7 @@ export const articles: Article[] = [
       },
     ],
     conclusion:
-      "Fiecare bancă are avantajele și dezavantajele ei. Cel mai eficient mod de a alege este prin intermediul unui broker autorizat care cunoaște în detaliu ofertele curente și poate negocia condiții personalizate. CS Credit Advisor colaborează cu toate cele 5 bănci enumerate și oferă consultanță gratuită.",
+      "Fiecare bancă are avantajele și dezavantajele ei. Cel mai eficient mod de a alege este prin intermediul unui broker autorizat care cunoaște în detaliu ofertele curente și poate negocia condiții personalizate. CS Credit Advisor colaborează cu principalele bănci din România și oferă consultanță gratuită.",
   },
 ];
 

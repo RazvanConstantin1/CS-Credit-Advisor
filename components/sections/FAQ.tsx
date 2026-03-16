@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Cum mă ajutați să obțin cea mai bună dobândă?",
-    a: "Comparăm în timp real ofertele tuturor celor 5 bănci partenere — BCR, BRD, Banca Transilvania, ING și Raiffeisen. Negociem direct condiții preferențiale datorită volumului de dosare procesate. Astfel primești o ofertă optimizată, fără să pierzi timp mergând bancă cu bancă.",
+    a: "Comparăm în timp real ofertele tuturor băncilor din rețeaua noastră de parteneri. Negociem direct condiții preferențiale datorită volumului de dosare procesate. Astfel primești o ofertă optimizată, fără să pierzi timp mergând bancă cu bancă.",
   },
   {
     q: "Cât durează procesul de aprobare a unui credit?",

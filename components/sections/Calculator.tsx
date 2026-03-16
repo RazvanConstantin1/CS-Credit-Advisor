@@ -160,7 +160,7 @@ export default function Calculator() {
                 Parteneri oficiali
               </p>
               <div className="flex flex-wrap gap-2">
-                {["BCR", "BRD", "Banca Transilvania", "ING", "Raiffeisen"].map((b) => (
+                {["Dobânzi Competitive", "Oferte Personalizate", "Acces la Bănci de Top", "Proces Rapid", "Negociere Directă"].map((b) => (
                   <span
                     key={b}
                     className="bg-white border border-[#ddd8ce] text-navy px-3 py-1.5 rounded-lg text-[12px] font-semibold"
