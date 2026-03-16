@@ -28,8 +28,7 @@ export const articles: Article[] = [
     readTime: "9 min",
     category: "Ghiduri",
     featured: true,
-    coverImage:
-      "Professional Romanian credit broker consulting a young couple in a modern Bucharest office, documents and laptop on desk, warm natural lighting, city skyline visible through window, photorealistic",
+    coverImage: "/blog/romanian_couple_bank_loan_1.png",
     sections: [
       {
         id: "credit-nevoi-personale-bucuresti-intro",
@@ -106,8 +105,7 @@ export const articles: Article[] = [
     date: "14 Martie 2026",
     readTime: "10 min",
     category: "Ghiduri",
-    coverImage:
-      "Aerial view of modern Bucharest residential neighborhood with apartment buildings, a family holding house keys in foreground, golden hour lighting, photorealistic",
+    coverImage: "/blog/couple_receiving_house_keys_1.png",
     sections: [
       {
         id: "credit-ipotecar-bucuresti-2026-intro",
@@ -183,8 +181,7 @@ export const articles: Article[] = [
     date: "12 Martie 2026",
     readTime: "8 min",
     category: "Ghiduri",
-    coverImage:
-      "Professional Romanian financial advisor shaking hands with a satisfied client across a desk with financial charts, modern office in Bucharest, natural daylight, photorealistic",
+    coverImage: "/blog/financial_advisor_client_consultation_1.png",
     sections: [
       {
         id: "ce-face-broker-credite-bucuresti",
@@ -248,8 +245,7 @@ export const articles: Article[] = [
     date: "10 Martie 2026",
     readTime: "9 min",
     category: "Sfaturi",
-    coverImage:
-      "Romanian person comparing financial documents with a calculator and laptop showing decreasing interest rate chart, modern home office in Bucharest, warm ambient lighting, photorealistic",
+    coverImage: "/blog/person_reviewing_savings_growth_1.png",
     sections: [
       {
         id: "refinantare-credit-bucuresti-2026-intro",
@@ -321,6 +317,7 @@ export const articles: Article[] = [
   {
     slug: "credit-personal-2026-ghid-complet",
     title: "Cum Să Obții un Credit de Nevoi Personale în 2026: Ghid Complet",
+    coverImage: "/blog/romanian_couple_bank_loan_1.png",
     excerpt:
       "Tot ce trebuie să știi despre creditele personale în 2026: condiții, dobânzi, documente și cum să obții cea mai bună ofertă pentru situația ta.",
     date: "5 Martie 2026",
@@ -387,6 +384,7 @@ export const articles: Article[] = [
   {
     slug: "prima-casa-noua-casa-ghid-comparativ",
     title: "Prima Casă sau Noua Casă: Cum Alegi Cel Mai Bun Program",
+    coverImage: "/blog/couple_receiving_house_keys_1.png",
     excerpt:
       "Comparăm programele Prima Casă și Noua Casă — avans, dobânzi, condiții de eligibilitate și ce s-a schimbat în 2026.",
     date: "20 Februarie 2026",
@@ -424,6 +422,7 @@ export const articles: Article[] = [
   {
     slug: "biroul-de-credit-explicat",
     title: "Ce Este Biroul de Credit și Cum Îți Afectează Dosarul",
+    coverImage: "/blog/credit_score.png",
     excerpt:
       "Cum funcționează Biroul de Credit în România, ce înseamnă un scor bun și cum îți menții și îmbunătățești scorul pentru a accesa cele mai bune oferte de creditare.",
     date: "10 Februarie 2026",
@@ -462,6 +461,7 @@ export const articles: Article[] = [
   {
     slug: "refinantare-credit-ghid",
     title: "Refinanțare Credit: Când Merită și Cum Procedezi",
+    coverImage: "/blog/person_reviewing_savings_growth_1.png",
     excerpt:
       "Refinanțarea poate reduce rata lunară sau costul total al creditului. Află când are sens să refinanțezi și care sunt pașii necesari.",
     date: "28 Ianuarie 2026",
@@ -491,6 +491,7 @@ export const articles: Article[] = [
   {
     slug: "cum-obtii-cel-mai-bun-credit-bucuresti",
     title: "Cum Obții Cel Mai Bun Credit în București: 6 Sfaturi Practice pentru 2026",
+    coverImage: "/blog/man_reviewing_report.png",
     excerpt:
       "Vrei cel mai avantajos credit de nevoi personale sau ipotecar din București? Iată 6 sfaturi concrete pentru a obține dobânda minimă și aprobarea rapidă.",
     date: "15 Ianuarie 2026",
@@ -552,6 +553,7 @@ export const articles: Article[] = [
   {
     slug: "top-banci-romania-2026",
     title: "Top Bănci România 2026: Comparație Dobânzi Credite Personale",
+    coverImage: "/blog/financial_advisor_client_consultation_1.png",
     excerpt:
       "Comparăm ofertele principale ale băncilor din România pentru credite personale în 2026: BCR, BRD, Banca Transilvania, ING și Raiffeisen.",
     date: "3 Ianuarie 2026",

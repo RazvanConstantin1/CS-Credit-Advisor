@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
@@ -56,6 +57,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
+
+        {/* Cover image */}
+        {article.coverImage && (
+          <div className="relative w-full h-64 sm:h-80 lg:h-96 overflow-hidden">
+            <Image src={article.coverImage} alt={article.title} fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-off-white/30" />
+          </div>
+        )}
 
         {/* Article body + sidebar */}
         <section className="bg-off-white py-12 sm:py-16">
@@ -165,8 +174,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               {related.map((a) => (
                 <Link key={a.slug} href={`/blog/${a.slug}`} className="group block">
                   <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-gold/30 hover:bg-navy-light/50 transition-all duration-300">
-                    <div className="h-36 bg-gradient-to-br from-navy-light to-navy-mid flex items-center justify-center text-3xl opacity-40">
-                      📄
+                    <div className="h-36 bg-gradient-to-br from-navy-light to-navy-mid relative overflow-hidden">
+                      {a.coverImage ? (
+                        <Image src={a.coverImage} alt={a.title} fill className="object-cover opacity-80" />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-3xl opacity-40">📄</div>
+                      )}
                     </div>
                     <div className="p-5">
                       <span className="text-[10px] text-gold uppercase tracking-[1px] font-semibold">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
@@ -69,11 +70,15 @@ export default function BlogPage() {
             </p>
             <Link href={`/blog/${featured.slug}`} className="group block">
               <div className="grid lg:grid-cols-[1fr_420px] gap-8 lg:gap-12 items-center">
-                {/* Image placeholder */}
+                {/* Cover image */}
                 <div className="relative h-56 sm:h-72 lg:h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-light to-navy-mid border border-white/10">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl opacity-20">📰</div>
-                  </div>
+                  {featured.coverImage ? (
+                    <Image src={featured.coverImage} alt={featured.title} fill className="object-cover" />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-6xl opacity-20">📰</div>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
                   <div className="absolute bottom-4 left-4">
                     <span className={`text-[11px] font-semibold px-3 py-1 rounded-full ${categoryColors[featured.category] ?? "bg-white/10 text-white"}`}>
@@ -119,11 +124,15 @@ export default function BlogPage() {
               {recent.map((a) => (
                 <Link key={a.slug} href={`/blog/${a.slug}`} className="group block">
                   <div className="bg-white rounded-2xl overflow-hidden border border-[#e8e3d8] hover:border-gold hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300">
-                    {/* Image placeholder */}
-                    <div className="h-44 bg-gradient-to-br from-navy-light to-navy-mid relative">
-                      <div className="absolute inset-0 flex items-center justify-center text-4xl opacity-20">
-                        📄
-                      </div>
+                    {/* Cover image */}
+                    <div className="h-44 bg-gradient-to-br from-navy-light to-navy-mid relative overflow-hidden">
+                      {a.coverImage ? (
+                        <Image src={a.coverImage} alt={a.title} fill className="object-cover" />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-4xl opacity-20">
+                          📄
+                        </div>
+                      )}
                       <div className="absolute bottom-3 left-3">
                         <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${categoryColors[a.category] ?? "bg-white/10 text-white"}`}>
                           {a.category}
@@ -162,8 +171,12 @@ export default function BlogPage() {
                   {archive.map((a) => (
                     <Link key={a.slug} href={`/blog/${a.slug}`} className="group block">
                       <div className="flex gap-4 p-4 rounded-xl border border-white/8 hover:border-gold/30 hover:bg-navy-light/50 transition-all duration-200">
-                        <div className="w-16 h-16 rounded-xl bg-navy-light flex-shrink-0 flex items-center justify-center text-2xl border border-white/8">
-                          📰
+                        <div className="w-16 h-16 rounded-xl bg-navy-light flex-shrink-0 border border-white/8 overflow-hidden relative">
+                          {a.coverImage ? (
+                            <Image src={a.coverImage} alt={a.title} fill className="object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-2xl">📰</div>
+                          )}
                         </div>
                         <div className="min-w-0">
                           <h4 className="text-[14px] font-semibold text-white leading-snug mb-1 group-hover:text-gold transition-colors line-clamp-2">
