@@ -7,7 +7,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 
 const DURATIONS = [12, 24, 36, 48, 60];
 const MIN_AMOUNT = 1000;
-const MAX_AMOUNT = 150000;
+const MAX_AMOUNT = 250000;
 const ANNUAL_RATE = 0.09;
 
 function calcMonthly(principal: number, months: number): number {
