@@ -771,15 +771,15 @@ video {
 .h-\[52px\] {
   height: 52px;
 }
+.h-\[70px\] {
+  height: 70px;
+}
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
 }
 .h-full {
   height: 100%;
-}
-.h-\[70px\] {
-  height: 70px;
 }
 .max-h-0 {
   max-height: 0px;
@@ -1314,6 +1314,10 @@ video {
 .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
 }
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .p-3 {
   padding: 0.75rem;
 }
@@ -1534,6 +1538,9 @@ video {
 .text-\[15px\] {
   font-size: 15px;
 }
+.text-\[16px\] {
+  font-size: 16px;
+}
 .text-\[1rem\] {
   font-size: 1rem;
 }
@@ -1567,9 +1574,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.text-\[16px\] {
-  font-size: 16px;
 }
 .font-bold {
   font-weight: 700;
@@ -1747,6 +1751,11 @@ video {
 .opacity-50 {
   opacity: 0.5;
 }
+.shadow-\[0_0_14px_rgba\(201\2c 168\2c 76\2c 0\.35\)\] {
+  --tw-shadow: 0 0 14px rgba(201,168,76,0.35);
+  --tw-shadow-colored: 0 0 14px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 .shadow-\[0_4px_16px_rgba\(201\2c 168\2c 76\2c 0\.35\)\] {
   --tw-shadow: 0 4px 16px rgba(201,168,76,0.35);
   --tw-shadow-colored: 0 4px 16px var(--tw-shadow-color);
@@ -1765,11 +1774,6 @@ video {
 .shadow-glass {
   --tw-shadow: 0 30px 80px rgba(0,0,0,0.5);
   --tw-shadow-colored: 0 30px 80px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.shadow-\[0_0_14px_rgba\(201\2c 168\2c 76\2c 0\.35\)\] {
-  --tw-shadow: 0 0 14px rgba(201,168,76,0.35);
-  --tw-shadow-colored: 0 0 14px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .outline-none {
@@ -2018,10 +2022,6 @@ body {
     height: 18rem;
   }
 
-  .sm\:h-\[72px\] {
-    height: 72px;
-  }
-
   .sm\:h-\[78px\] {
     height: 78px;
   }
@@ -2036,10 +2036,6 @@ body {
 
   .sm\:items-center {
     align-items: center;
-  }
-
-  .sm\:justify-start {
-    justify-content: flex-start;
   }
 
   .sm\:gap-10 {
@@ -2109,16 +2105,16 @@ body {
     font-size: 1.8rem;
   }
 
-  .sm\:text-\[10px\] {
-    font-size: 10px;
+  .sm\:text-\[11px\] {
+    font-size: 11px;
   }
 
   .sm\:text-\[15px\] {
     font-size: 15px;
   }
 
-  .sm\:text-\[17px\] {
-    font-size: 17px;
+  .sm\:text-\[18px\] {
+    font-size: 18px;
   }
 
   .sm\:text-\[2\.4rem\] {
@@ -2140,14 +2136,6 @@ body {
   .sm\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-
-  .sm\:text-\[11px\] {
-    font-size: 11px;
-  }
-
-  .sm\:text-\[18px\] {
-    font-size: 18px;
   }
 }
 @media (min-width: 768px) {

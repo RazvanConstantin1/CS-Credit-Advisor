@@ -1,52 +1,59 @@
+import Image from "next/image";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 const testimonials = [
   {
-    initials: "M",
+    image: "/download%20(5).jpeg",
     name: "Mihai Dumitrescu",
     city: "București",
     tag: "Credit Personal – 25.000 RON",
+    stars: 5,
     quote:
       "Aveam un dosar respins de două bănci din cauza unui credit vechi neachitat. CS Credit Advisor a găsit o soluție în mai puțin de o săptămână. Profesionalism rar întâlnit!",
   },
   {
-    initials: "A",
+    image: "/download%20(1).jpeg",
     name: "Andreea Ionescu",
-    city: "Cluj-Napoca",
+    city: "București",
     tag: "Credit Ipotecar – 180.000 RON",
+    stars: 4,
     quote:
       "Am apelat la CS Credit Advisor pentru un credit ipotecar și am rămas impresionată de cât de simplu a fost totul. M-au ghidat pas cu pas și am semnat contractul în 3 săptămâni.",
   },
   {
-    initials: "G",
+    image: "/download%20(6).jpeg",
     name: "George Popa",
-    city: "Timișoara",
+    city: "Ilfov",
     tag: "Credit Personal – 12.000 RON",
+    stars: 5,
     quote:
       "Nu credeam că mai pot lua un credit după ce am intrat în insolvență acum câțiva ani. Consilierii de la CS m-au ajutat să înțeleg opțiunile și am obținut în final aprobarea.",
   },
   {
-    initials: "E",
+    image: "/download%20(2).jpeg",
     name: "Elena Radu",
-    city: "Iași",
+    city: "București",
     tag: "Credit Personal – 8.000 RON",
+    stars: 5,
     quote:
       "Serviciul este cu adevărat gratuit — am verificat de mai multe ori. Echipa a fost transparentă din prima secundă. Recomand tuturor care au nevoie de un credit avantajos.",
   },
   {
-    initials: "C",
+    image: "/download%20(3).jpeg",
     name: "Cristian & Maria Văduva",
-    city: "Brașov",
+    city: "Ilfov",
     tag: "Credit Ipotecar Prima Casă",
+    stars: 4,
     quote:
       "Doream să cumpărăm prima noastră locuință dar nu știam de unde să începem. CS Credit Advisor ne-a explicat tot procesul și ne-a obținut o dobândă mai mică decât ne așteptam.",
   },
   {
-    initials: "L",
+    image: "/download.jpeg",
     name: "Laura Constantin",
-    city: "Constanța",
+    city: "București",
     tag: "Credit Personal – 15.000 RON",
+    stars: 5,
     quote:
       "Aveam scoring mic și nu știam că există soluții pentru mine. Consultantul meu de la CS a fost empatic, răbdător și mi-a găsit o ofertă potrivită. Mulțumesc!",
   },
@@ -80,7 +87,9 @@ export default function Testimonials() {
                 </span>
 
                 {/* Stars */}
-                <div className="text-gold text-sm mb-4 tracking-wider">★★★★★</div>
+                <div className="text-gold text-sm mb-4 tracking-wider">
+                  {"★".repeat(t.stars)}{"☆".repeat(5 - t.stars)}
+                </div>
 
                 <blockquote className="text-[14px] text-white/70 leading-[1.75] mb-5 italic">
                   {t.quote}
@@ -88,8 +97,14 @@ export default function Testimonials() {
 
                 {/* Author */}
                 <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center font-playfair font-bold text-navy text-base flex-shrink-0">
-                    {t.initials}
+                  <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                    <Image
+                      src={t.image}
+                      alt={t.name}
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <strong className="block text-[14px] text-white font-semibold">{t.name}</strong>
