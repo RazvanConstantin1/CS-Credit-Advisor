@@ -9,8 +9,8 @@ const navLinks = [
   { href: "/#trust", label: "Beneficii" },
   { href: "/#calculator", label: "Calculator" },
   { href: "/#about", label: "Despre Noi" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/blog", label: "Blog" },
+  { href: "/#faq", label: "Întrebări Frecvente" },
+  { href: "/blog", label: "Articole" },
 ];
 
 export default function Header() {
