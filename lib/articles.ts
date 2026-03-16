@@ -19,7 +19,7 @@ export interface Article {
 export const articles: Article[] = [
   {
     slug: "credit-personal-2026-ghid-complet",
-    title: "Cum Să Obții un Credit Personal în 2026: Ghid Complet",
+    title: "Cum Să Obții un Credit de Nevoi Personale în 2026: Ghid Complet",
     excerpt:
       "Tot ce trebuie să știi despre creditele personale în 2026: condiții, dobânzi, documente și cum să obții cea mai bună ofertă pentru situația ta.",
     date: "5 Martie 2026",
@@ -29,9 +29,9 @@ export const articles: Article[] = [
     sections: [
       {
         id: "ce-este",
-        heading: "1. Ce este un credit personal?",
+        heading: "1. Ce este un credit de nevoi personale?",
         content: [
-          "Un credit personal este un împrumut acordat de o bancă sau instituție financiară fără a necesita o garanție imobiliară. Poate fi utilizat pentru orice scop — renovare, vacanță, achiziții mari sau situații neprevăzute.",
+          "Un credit de nevoi personale este un împrumut acordat de o bancă sau instituție financiară fără a necesita o garanție imobiliară. Poate fi utilizat pentru orice scop — renovare, vacanță, achiziții mari sau situații neprevăzute.",
           "În 2026, băncile din România oferă credite personale cu sume între 1.000 și 150.000 RON și perioade de rambursare de la 6 luni la 10 ani. Dobânzile variază în funcție de bancă, profil financiar și tipul de credit ales.",
         ],
       },
@@ -39,7 +39,7 @@ export const articles: Article[] = [
         id: "conditii",
         heading: "2. Condiții de eligibilitate",
         content: [
-          "Pentru a obține un credit personal în 2026, vei avea nevoie de: vârsta între 18 și 70 de ani la finalul creditului, venituri stabile și demonstrabile, un istoricul de credit acceptabil și documente de identitate valabile.",
+          "Pentru a obține un credit de nevoi personale în 2026, vei avea nevoie de: vârsta între 18 și 70 de ani la finalul creditului, venituri stabile și demonstrabile, un istoricul de credit acceptabil și documente de identitate valabile.",
           "Chiar dacă ai înregistrări negative la Biroul de Credit, unele bănci partenere acceptă dosare cu istorii dificile. Un broker autorizat te poate ajuta să identifici exact ce opțiuni ai disponibile.",
           "Venitul minim acceptat variază în funcție de suma solicitată și de bancă. De regulă, rata lunară nu trebuie să depășească 40-45% din venitul net al familiei.",
         ],
@@ -82,7 +82,7 @@ export const articles: Article[] = [
       },
     ],
     conclusion:
-      "Obținerea unui credit personal în 2026 nu trebuie să fie un proces complicat. Cu documentele corecte, o comparație atentă a ofertelor și sprijinul unui broker autorizat, poți accesa finanțarea de care ai nevoie în condiții avantajoase. Consultanții CS Credit Advisor sunt disponibili să te ghideze gratuit prin fiecare pas al procesului.",
+      "Obținerea unui credit de nevoi personale în 2026 nu trebuie să fie un proces complicat. Cu documentele corecte, o comparație atentă a ofertelor și sprijinul unui broker autorizat, poți accesa finanțarea de care ai nevoie în condiții avantajoase. Consultanții CS Credit Advisor sunt disponibili să te ghideze gratuit prin fiecare pas al procesului.",
   },
   {
     slug: "prima-casa-noua-casa-ghid-comparativ",

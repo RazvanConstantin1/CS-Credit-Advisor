@@ -17,14 +17,14 @@ const faqs = [
   },
   {
     q: "Cât durează procesul de aprobare a unui credit?",
-    a: "Variază în funcție de tipul creditului. Un credit personal poate fi aprobat în 1–3 zile lucrătoare, în timp ce un credit ipotecar poate dura 2–4 săptămâni din cauza evaluărilor suplimentare (imobil, acte). Ne asigurăm că procesul decurge cât mai rapid posibil.",
+    a: "Variază în funcție de tipul creditului. Un credit de nevoi personale poate fi aprobat în 1–3 zile lucrătoare, în timp ce un credit ipotecar poate dura 2–4 săptămâni din cauza evaluărilor suplimentare (imobil, acte). Ne asigurăm că procesul decurge cât mai rapid posibil.",
   },
   {
     q: "Veți face o interogare la Biroul de Credit în etapa inițială?",
     a: "Nu. Prima consultație este informativă și nu implică nicio interogare la Biroul de Credit. Interogarea oficială se realizează doar după ce decizi că vrei să aplici la o bancă și numai cu acordul tău explicit.",
   },
   {
-    q: "Ce documente îmi trebuie pentru un credit personal?",
+    q: "Ce documente îmi trebuie pentru un credit de nevoi personale?",
     a: "De regulă: carte de identitate, adeverință de venit sau fluturași de salariu (ultimele 3 luni), și extrase de cont. Lista exactă depinde de bancă și de tipul de credit — consultantul tău îți va comunica lista completă după analiza situației tale.",
   },
   {

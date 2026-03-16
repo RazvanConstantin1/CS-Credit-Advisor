@@ -41,7 +41,7 @@ export default function Hero() {
 
           {/* Sub */}
           <p className="text-white/70 text-base sm:text-lg leading-[1.75] mb-8 max-w-lg">
-            Fie că ai nevoie de un credit personal sau ipotecar, echipa CS Credit
+            Fie că ai nevoie de un credit de nevoi personale sau ipotecar, echipa CS Credit
             Advisor te ghidează profesionist prin fiecare pas — chiar dacă ai un
             istoric de credit dificil sau înregistrări negative.
           </p>

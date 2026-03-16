@@ -7,7 +7,7 @@ const testimonials = [
     image: "/download%20(5).jpeg",
     name: "Mihai Dumitrescu",
     city: "București",
-    tag: "Credit Personal – 25.000 RON",
+    tag: "Credit de Nevoi Personale – 95.000 RON",
     stars: 5,
     quote:
       "Aveam un dosar respins de două bănci din cauza unui credit vechi neachitat. CS Credit Advisor a găsit o soluție în mai puțin de o săptămână. Profesionalism rar întâlnit!",
@@ -25,7 +25,7 @@ const testimonials = [
     image: "/download%20(6).jpeg",
     name: "George Popa",
     city: "Ilfov",
-    tag: "Credit Personal – 12.000 RON",
+    tag: "Credit de Nevoi Personale – 75.000 RON",
     stars: 5,
     quote:
       "Nu credeam că mai pot lua un credit după ce am intrat în insolvență acum câțiva ani. Consilierii de la CS m-au ajutat să înțeleg opțiunile și am obținut în final aprobarea.",
@@ -34,7 +34,7 @@ const testimonials = [
     image: "/download%20(2).jpeg",
     name: "Elena Radu",
     city: "București",
-    tag: "Credit Personal – 8.000 RON",
+    tag: "Credit de Nevoi Personale – 60.000 RON",
     stars: 5,
     quote:
       "Serviciul este cu adevărat gratuit — am verificat de mai multe ori. Echipa a fost transparentă din prima secundă. Recomand tuturor care au nevoie de un credit avantajos.",
@@ -52,7 +52,7 @@ const testimonials = [
     image: "/download.jpeg",
     name: "Laura Constantin",
     city: "București",
-    tag: "Credit Personal – 15.000 RON",
+    tag: "Credit de Nevoi Personale – 80.000 RON",
     stars: 5,
     quote:
       "Aveam scoring mic și nu știam că există soluții pentru mine. Consultantul meu de la CS a fost empatic, răbdător și mi-a găsit o ofertă potrivită. Mulțumesc!",

@@ -179,7 +179,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
           className={`${inputBase} custom-select cursor-pointer`}
         >
           <option value="" disabled>Selectează tipul de credit...</option>
-          <option value="Credit Personal">Credit Personal</option>
+          <option value="Credit de Nevoi Personale">Credit de Nevoi Personale</option>
           <option value="Credit Ipotecar / Imobiliar">Credit Ipotecar / Imobiliar</option>
         </select>
       </div>
