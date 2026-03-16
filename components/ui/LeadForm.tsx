@@ -34,7 +34,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const inputBase = [
     "w-full rounded-lg px-3.5 py-3 text-sm outline-none transition-all duration-200 font-dm border-[1.5px]",
     dark
-      ? "bg-white/8 border-white/15 text-white placeholder:text-white/35 focus:border-gold focus:bg-white/12"
+      ? "bg-white/15 border-white/20 text-white [color-scheme:dark] placeholder:text-white/40 focus:border-gold focus:bg-white/20"
       : "bg-[#fafbfc] border-[#e0e4ea] text-navy placeholder:text-muted focus:border-gold focus:bg-white focus:shadow-[0_0_0_3px_rgba(201,168,76,0.12)]",
   ].join(" ");
 

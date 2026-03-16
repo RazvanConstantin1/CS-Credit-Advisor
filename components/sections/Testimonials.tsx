@@ -19,7 +19,7 @@ const testimonials = [
     tag: "Credit Ipotecar – 180.000 RON",
     stars: 4,
     quote:
-      "Am apelat la CS Credit Advisor pentru un credit ipotecar și am rămas impresionată de cât de simplu a fost totul. M-au ghidat pas cu pas și am semnat contractul în 3 săptămâni.",
+      "Procesul a durat ceva mai mult decât mă așteptam — evaluarea imobilului și actele de la notar au luat vreo două săptămâni în plus. Dar echipa CS m-a ținut la curent la fiecare pas și am obținut o dobândă excelentă. Recomand cu încredere.",
   },
   {
     image: "/download%20(6).jpeg",
@@ -46,7 +46,7 @@ const testimonials = [
     tag: "Credit Ipotecar Prima Casă",
     stars: 4,
     quote:
-      "Doream să cumpărăm prima noastră locuință dar nu știam de unde să începem. CS Credit Advisor ne-a explicat tot procesul și ne-a obținut o dobândă mai mică decât ne așteptam.",
+      "Nu ne așteptam la atâtea documente pentru Prima Casă — a fost un pic copleșitor la început. Din fericire, consultantul nostru ne-a spus exact ce trebuie și am reușit să semnăm fără bătăi de cap. Am recomanda oricui.",
   },
   {
     image: "/download.jpeg",
