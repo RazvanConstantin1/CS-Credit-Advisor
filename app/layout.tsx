@@ -41,14 +41,14 @@ export default function RootLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1656595772044745');
+            fbq('init', '1904815583491015');
             fbq('track', 'PageView');
           `}
         </Script>
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img height="1" width="1" style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1656595772044745&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id=1904815583491015&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>
