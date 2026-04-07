@@ -7,10 +7,16 @@ export const metadata: Metadata = {
   description:
     "Broker de credite autorizat. Comparăm toate ofertele din piață și îți negociem cele mai bune condiții — personal sau ipotecar. Serviciu 100% gratuit.",
   keywords: "credit, broker credit, credit de nevoi personale, credit ipotecar, IFN, Romania, CS Credit Advisor",
+  icons: {
+    icon: "/logo.jpg",
+    apple: "/logo.jpg",
+    shortcut: "/logo.jpg",
+  },
   openGraph: {
     title: "CS Credit Advisor",
     description: "Serviciu de brokeraj credite 100% gratuit. Parteneri cu principalele bănci din România.",
     type: "website",
+    images: [{ url: "/logo.jpg" }],
   },
 };
 
