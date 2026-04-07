@@ -22,6 +22,8 @@ export default function LeadForm({
   formId,
 }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [rejected, setRejected] = useState(false);
+  const [rejectedMsg, setRejectedMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [gdprConsent, setGdprConsent] = useState(false);
@@ -45,6 +47,26 @@ export default function LeadForm({
   const labelClass = `block text-[12px] font-semibold mb-1.5 tracking-[0.3px] ${
     dark ? "text-white/70" : "text-charcoal"
   }`;
+
+  const handleCreditStatusChange = (value: string) => {
+    setCreditStatus(value);
+    if (value === "Slab — întârzieri mari") {
+      setRejectedMsg(
+        "Ne pare rău, dar situația ta de credit actuală nu îndeplinește criteriile minime de eligibilitate pentru creditare. Te invităm să revii după ce situația creditului tău s-a îmbunătățit.",
+      );
+      setRejected(true);
+    }
+  };
+
+  const handleJobSeniorityChange = (value: string) => {
+    setJobSeniority(value);
+    if (value === "Mai puțin de 6 luni") {
+      setRejectedMsg(
+        "Ne pare rău, dar o vechime mai mică de 6 luni la actualul loc de muncă nu îndeplinește criteriile minime de eligibilitate pentru creditare. Te invităm să revii după ce acumulezi cel puțin 6 luni de vechime.",
+      );
+      setRejected(true);
+    }
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -120,6 +142,35 @@ export default function LeadForm({
     );
   }
 
+  if (rejected) {
+    return (
+      <div className="flex flex-col items-center justify-center py-10 text-center gap-3 px-4">
+        <div className="text-5xl mb-2">❌</div>
+        <h4
+          className={`font-playfair text-xl font-bold ${dark ? "text-white" : "text-navy"}`}
+        >
+          Cerere neeligibilă
+        </h4>
+        <p
+          className={`text-sm leading-relaxed max-w-xs ${dark ? "text-white/60" : "text-muted"}`}
+        >
+          {rejectedMsg}
+        </p>
+        <button
+          onClick={() => {
+            setRejected(false);
+            setRejectedMsg("");
+            setCreditStatus("");
+            setJobSeniority("");
+          }}
+          className={`mt-2 text-[12px] underline cursor-pointer ${dark ? "text-white/50 hover:text-white/80" : "text-muted hover:text-navy"} transition-colors`}
+        >
+          Modifică selecția
+        </button>
+      </div>
+    );
+  }
+
   return (
     <form onSubmit={handleSubmit} className="space-y-3.5" noValidate>
       {/* Name */}
@@ -183,7 +234,7 @@ export default function LeadForm({
         </label>
         <select
           value={creditStatus}
-          onChange={(e) => setCreditStatus(e.target.value)}
+          onChange={(e) => handleCreditStatusChange(e.target.value)}
           required
           className={`${inputBase} custom-select cursor-pointer`}
         >
@@ -196,10 +247,9 @@ export default function LeadForm({
           <option value="Mediu — câteva întârzieri mici">
             Mediu — câteva întârzieri mici
           </option>
-          <option value="Mediu — câteva întârzieri mici">
+          <option value="Slab — întârzieri mari">
             Slab — întârzieri mari
           </option>
-
           <option value="Nu am niciun credit activ">
             Nu am niciun credit activ
           </option>
@@ -236,7 +286,7 @@ export default function LeadForm({
         </label>
         <select
           value={jobSeniority}
-          onChange={(e) => setJobSeniority(e.target.value)}
+          onChange={(e) => handleJobSeniorityChange(e.target.value)}
           required
           className={`${inputBase} custom-select cursor-pointer`}
         >
