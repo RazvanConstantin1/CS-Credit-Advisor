@@ -37,6 +37,18 @@ export default function RootLayout({
       </head>
       <body className="font-dm antialiased bg-off-white text-navy overflow-x-hidden">
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-85M2PLMP1S"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-85M2PLMP1S');
+          `}
+        </Script>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
