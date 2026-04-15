@@ -6,6 +6,17 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-16] — Logo-uri parteneri IFN (CreditPrime + Axi-card)
+
+### Fișiere noi
+- `public/partners/creditprime-logo.svg` — logo oficial de pe creditprime.ro
+- `public/partners/axicard-logo.svg` — logo oficial de pe axi-card.ro
+
+### Fișiere modificate
+- `app/parteneri-ifn/page.tsx` — adăugat `logo`, `logoWidth`, `logoHeight` în `ifnList`; render logo cu `next/image` deasupra badge-ului în fiecare card
+
+---
+
 ## [2026-04-16] — Pagină parteneri IFN: numere BNR, FAQ afiliere, birou credit
 
 ### Fișiere modificate
