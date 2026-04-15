@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
@@ -36,6 +37,9 @@ const ifnList = [
       "Dobânda poate fi mai mare față de credite bancare",
       "Suma maximă limitată la 15.000 lei",
     ],
+    logo: "/partners/creditprime-logo.svg",
+    logoWidth: 136,
+    logoHeight: 22,
     ctaLabel: "Aplică la CreditPrime →",
     href: AFFILIATE_LINKS.creditPrime,
     disclaimer: "*Serviciu oferit de CreditPrime, independent de CS Credit Advisor",
@@ -67,6 +71,9 @@ const ifnList = [
       "Limită maximă de 4.000 lei",
       "Dobânzi specifice produselor de tip revolving",
     ],
+    logo: "/partners/axicard-logo.svg",
+    logoWidth: 76,
+    logoHeight: 41,
     ctaLabel: "Aplică la Axi-card →",
     href: AFFILIATE_LINKS.axiCard,
     disclaimer: "*Serviciu oferit de Axi-card, independent de CS Credit Advisor",
@@ -238,6 +245,16 @@ export default function ParteneriIFNPage() {
                       {/* Header card */}
                       <div className="flex items-start justify-between gap-3">
                         <div>
+                          <div className="mb-3">
+                            <Image
+                              src={ifn.logo}
+                              alt={`${ifn.title} logo`}
+                              width={ifn.logoWidth}
+                              height={ifn.logoHeight}
+                              className="h-8 w-auto object-contain"
+                              unoptimized
+                            />
+                          </div>
                           <span
                             className={`inline-block text-[11px] font-semibold px-3 py-1 rounded-full tracking-wide mb-2 ${badgeClasses}`}
                           >
