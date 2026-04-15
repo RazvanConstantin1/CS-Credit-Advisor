@@ -72,7 +72,7 @@ export default function LeadForm({
     dark ? "text-white/70" : "text-charcoal"
   }`;
 
-  const disqualify = (msg: string, fromStep: number, field: string, redirectToIFN = true) => {
+  const disqualify = (msg: string, fromStep: number, field: string, redirectTo: string | false = "/necalificat") => {
     setRejectedMsg(msg);
     setRejectedStep(fromStep);
     setRejectedField(field);
@@ -83,13 +83,13 @@ export default function LeadForm({
       rejection_reason: field,
       lead_source: leadSource,
     });
-    if (redirectToIFN) {
+    if (redirectTo) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).fbq?.("track", "Lead", {
         content_name: "Disqualified — " + field,
         content_category: "IFN Redirect",
       });
-      router.push("/necalificat");
+      router.push(redirectTo);
     }
   };
 
@@ -123,11 +123,19 @@ export default function LeadForm({
 
   const handleCreditStatusChange = (value: string) => {
     setCreditStatus(value);
-    if (value === "Dificil — întârzieri mari sau credite restante")
+    if (value === "Dificil — întârzieri mari sau credite restante") {
       disqualify(
         "Ne pare rău, dar situația ta de credit actuală nu îndeplinește criteriile minime de eligibilitate pentru creditare. Te invităm să revii după ce situația creditului tău s-a îmbunătățit.",
         1, "creditStatus",
+        "/necalificat",
       );
+    } else if (value === "Mediu — câteva întârzieri mici (max 30 zile)") {
+      disqualify(
+        "Istoricul tău de credit cu întârzieri poate limita opțiunile bancare. Te redirecționăm către soluții IFN potrivite profilului tău.",
+        1, "creditStatus",
+        "/necalificat",
+      );
+    }
   };
 
   const handleDebtRatioChange = (value: string) => {

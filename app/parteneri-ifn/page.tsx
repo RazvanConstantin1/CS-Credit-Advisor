@@ -71,9 +71,9 @@ const ifnList = [
       "Limită maximă de 4.000 lei",
       "Dobânzi specifice produselor de tip revolving",
     ],
-    logo: "/partners/axicard-logo.svg",
-    logoWidth: 76,
-    logoHeight: 41,
+    logo: "/partners/axicard-logo.png",
+    logoWidth: 400,
+    logoHeight: 216,
     ctaLabel: "Aplică la Axi-card →",
     href: AFFILIATE_LINKS.axiCard,
     disclaimer: "*Serviciu oferit de Axi-card, independent de CS Credit Advisor",
@@ -245,25 +245,29 @@ export default function ParteneriIFNPage() {
                       {/* Header card */}
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="mb-3">
+                          <span
+                            className={`inline-block text-[11px] font-semibold px-3 py-1 rounded-full tracking-wide mb-3 ${badgeClasses}`}
+                          >
+                            {ifn.badge}
+                          </span>
+                          <a
+                            href={ifn.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={`Aplică la ${ifn.title}`}
+                            onClick={() => handleAffiliateClick(ifn.key)}
+                            className="block mb-1"
+                          >
                             <Image
                               src={ifn.logo}
                               alt={`${ifn.title} logo`}
                               width={ifn.logoWidth}
                               height={ifn.logoHeight}
-                              className="h-8 w-auto object-contain"
+                              className="h-9 w-auto object-contain"
                               unoptimized
                             />
-                          </div>
-                          <span
-                            className={`inline-block text-[11px] font-semibold px-3 py-1 rounded-full tracking-wide mb-2 ${badgeClasses}`}
-                          >
-                            {ifn.badge}
-                          </span>
-                          <h3 className="font-playfair text-[22px] font-bold text-navy">
-                            {ifn.title}
-                          </h3>
-                          <p className="text-[12px] text-muted mt-0.5">{ifn.tagline}</p>
+                          </a>
+                          <p className="text-[12px] text-muted mt-1">{ifn.tagline}</p>
                         </div>
                         <div className="flex flex-col items-end gap-0.5">
                           <Stars count={ifn.stars} />

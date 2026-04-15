@@ -30,6 +30,9 @@ function IFNCard({
   href,
   disclaimer,
   ifnKey,
+  logo,
+  logoWidth,
+  logoHeight,
 }: {
   title: string;
   badge: string;
@@ -40,6 +43,9 @@ function IFNCard({
   href: string;
   disclaimer: string;
   ifnKey: string;
+  logo: string;
+  logoWidth: number;
+  logoHeight: number;
 }) {
   const handleClick = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -66,8 +72,24 @@ function IFNCard({
         {badge}
       </span>
 
-      {/* Title */}
-      <h3 className="font-playfair text-[22px] font-bold text-navy">{title}</h3>
+      {/* Logo */}
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Aplică la ${title}`}
+        onClick={handleClick}
+        className="block"
+      >
+        <Image
+          src={logo}
+          alt={`${title} logo`}
+          width={logoWidth}
+          height={logoHeight}
+          className="h-9 w-auto object-contain"
+          unoptimized
+        />
+      </a>
 
       {/* Description */}
       <p className="text-[14px] text-charcoal leading-relaxed">{description}</p>
@@ -174,6 +196,9 @@ export default function NecalificatPage() {
               href={AFFILIATE_LINKS.creditPrime}
               disclaimer="*Serviciu oferit de CreditPrime, independent de CS Credit Advisor"
               ifnKey="CreditPrime"
+              logo="/partners/creditprime-logo.svg"
+              logoWidth={136}
+              logoHeight={22}
             />
             <IFNCard
               title="Axi-card"
@@ -185,6 +210,9 @@ export default function NecalificatPage() {
               href={AFFILIATE_LINKS.axiCard}
               disclaimer="*Serviciu oferit de Axi-card, independent de CS Credit Advisor"
               ifnKey="Axi-card"
+              logo="/partners/axicard-logo.png"
+              logoWidth={400}
+              logoHeight={216}
             />
           </div>
         </section>
