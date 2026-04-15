@@ -6,6 +6,17 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-16] — Pagină parteneri IFN: numere BNR, FAQ afiliere, birou credit
+
+### Fișiere modificate
+- `app/parteneri-ifn/page.tsx`
+  - Birou Credit CreditPrime: "Acceptă și negativ" → "Flexibil — analizează individual"
+  - Adăugat `bnrInfo` pe fiecare card IFN (ECOFINANCE RG-PJR-41-110328 / AXI Finance RG-PJR-41-110308)
+  - Nota editorială sub rating: "Evaluare editorială CS Credit Advisor"
+  - FAQ nou: "De ce recomandați aceste IFN-uri?" cu răspuns transparent despre afiliere
+
+---
+
 ## [2026-04-16] — Sistem afiliere IFN & redirect descalificați
 
 ### Fișiere noi
