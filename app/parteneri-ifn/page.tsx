@@ -23,7 +23,7 @@ const ifnList = [
       sumaMax: "15.000 lei",
       perioada: "până la 24 luni",
       venitMin: "1.000 lei",
-      birouCredit: "Acceptă și negativ",
+      birouCredit: "Flexibil — analizează individual",
     },
     benefits: [
       "Fără garanții imobiliare",
@@ -39,6 +39,7 @@ const ifnList = [
     ctaLabel: "Aplică la CreditPrime →",
     href: AFFILIATE_LINKS.creditPrime,
     disclaimer: "*Serviciu oferit de CreditPrime, independent de CS Credit Advisor",
+    bnrInfo: "ECOFINANCE IFN S.A. — Înregistrat BNR: RG-PJR-41-110328",
   },
   {
     key: "Axi-card",
@@ -69,6 +70,7 @@ const ifnList = [
     ctaLabel: "Aplică la Axi-card →",
     href: AFFILIATE_LINKS.axiCard,
     disclaimer: "*Serviciu oferit de Axi-card, independent de CS Credit Advisor",
+    bnrInfo: "AXI Finance IFN S.A. — Înregistrat BNR: RG-PJR-41-110308",
   },
 ];
 
@@ -88,6 +90,10 @@ const faqItems = [
   {
     q: "Pot lua un credit IFN dacă am fost refuzat de bancă?",
     a: "Da, acesta este tocmai avantajul principal al IFN-urilor. Ele acceptă deseori și clienți cu întârzieri istorice la plată, grad de îndatorare mai ridicat sau vechime mai mică la locul de muncă.",
+  },
+  {
+    q: "De ce recomandați aceste IFN-uri?",
+    a: "CS Credit Advisor are o relație de afiliere cu partenerii prezentați pe această pagină. Primim un comision dacă aplici și ești aprobat, fără niciun cost suplimentar pentru tine. Recomandăm exclusiv IFN-uri autorizate BNR, pe care le-am analizat și considerat potrivite pentru clienții care nu se califică pentru un credit bancar.",
   },
 ];
 
@@ -242,7 +248,10 @@ export default function ParteneriIFNPage() {
                           </h3>
                           <p className="text-[12px] text-muted mt-0.5">{ifn.tagline}</p>
                         </div>
-                        <Stars count={ifn.stars} />
+                        <div className="flex flex-col items-end gap-0.5">
+                          <Stars count={ifn.stars} />
+                          <p className="text-xs text-gray-400 mt-1">Evaluare editorială CS Credit Advisor</p>
+                        </div>
                       </div>
 
                       <p className="text-[13px] text-charcoal leading-relaxed">
@@ -324,6 +333,9 @@ export default function ParteneriIFNPage() {
                       >
                         {ifn.ctaLabel}
                       </a>
+                      <p className="text-xs text-gray-400 mt-3 text-center">
+                        {ifn.bnrInfo}
+                      </p>
                       <p className="text-[11px] text-muted text-center leading-snug">
                         {ifn.disclaimer}
                       </p>
