@@ -34,6 +34,7 @@ export default function Footer() {
               ["/#about", "Despre Noi"],
               ["/#faq", "FAQ"],
               ["/blog", "Blog"],
+              ["/parteneri-ifn", "Soluții IFN"],
             ].map(([href, label]) => (
               <Link
                 key={href}

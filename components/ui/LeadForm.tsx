@@ -4,6 +4,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { ShieldCheck, Loader2, ChevronRight, ChevronLeft } from "lucide-react";
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -23,6 +24,7 @@ export default function LeadForm({
   compact = false,
   formId,
 }: LeadFormProps) {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [rejected, setRejected] = useState(false);
@@ -70,7 +72,7 @@ export default function LeadForm({
     dark ? "text-white/70" : "text-charcoal"
   }`;
 
-  const disqualify = (msg: string, fromStep: number, field: string) => {
+  const disqualify = (msg: string, fromStep: number, field: string, redirectToIFN = true) => {
     setRejectedMsg(msg);
     setRejectedStep(fromStep);
     setRejectedField(field);
@@ -81,6 +83,14 @@ export default function LeadForm({
       rejection_reason: field,
       lead_source: leadSource,
     });
+    if (redirectToIFN) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).fbq?.("track", "Lead", {
+        content_name: "Disqualified — " + field,
+        content_category: "IFN Redirect",
+      });
+      router.push("/necalificat");
+    }
   };
 
   const handleEmploymentStatusChange = (value: string) => {
@@ -89,6 +99,7 @@ export default function LeadForm({
       disqualify(
         "Ne pare rău, dar lipsa unui venit stabil nu îndeplinește criteriile minime de eligibilitate pentru creditare. Te invităm să revii după ce obții un loc de muncă stabil.",
         1, "employmentStatus",
+        false,
       );
   };
 

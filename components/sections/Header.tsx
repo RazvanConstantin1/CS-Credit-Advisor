@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/#about", label: "Despre Noi" },
   { href: "/#faq", label: "Întrebări Frecvente" },
   { href: "/blog", label: "Articole" },
+  { href: "/parteneri-ifn", label: "Soluții IFN" },
 ];
 
 export default function Header() {

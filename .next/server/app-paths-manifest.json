@@ -1,5 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
+  "/icon.png/route": "app/icon.png/route.js",
   "/page": "app/page.js",
-  "/icon.png/route": "app/icon.png/route.js"
+  "/necalificat/page": "app/necalificat/page.js",
+  "/parteneri-ifn/page": "app/parteneri-ifn/page.js"
 }
