@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="ro" className="scroll-smooth">
       <head>
+        <meta name="verify-admitad" content="9f74b14d08" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
