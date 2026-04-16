@@ -1,0 +1,9 @@
+<svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circle icon -->
+  <circle cx="13" cy="14" r="9" fill="#E02020"/>
+  <text x="9" y="19" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">H</text>
+  <!-- "hora" text bold -->
+  <text x="28" y="20" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#E02020" letter-spacing="0.3">hora</text>
+  <!-- "credit" text regular -->
+  <text x="68" y="20" font-family="Arial, sans-serif" font-size="15" font-weight="400" fill="#192638" letter-spacing="0.3">credit</text>
+</svg>

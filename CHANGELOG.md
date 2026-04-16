@@ -6,6 +6,34 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-16] — Adăugare parteneri IFN noi: Via Conto + Hora Credit
+
+### Fișiere noi
+- `public/partners/viaconto-logo.svg` — logo SVG text-based Via Conto
+- `public/partners/horacredit-logo.svg` — logo SVG text-based Hora Credit
+
+### Fișiere modificate
+- `constants/affiliateLinks.ts` — adăugat `viaConto` și `horaCredit` cu link-urile Admitad
+- `app/parteneri-ifn/page.tsx` — adăugat 2 intrări noi în `ifnList` (Via Conto, Hora Credit)
+- `app/necalificat/page.tsx` — adăugat beneficii și 2 carduri `IFNCard` noi
+
+### Link-uri afiliere (Admitad)
+- Via Conto: `https://heqgr.com/g/2k0zn3cn8y029db2ecd3e9d82934dd/` → redirect `viaconto.ro` ✓
+- Hora Credit: `https://rzekl.com/g/hnimhgl6y7029db2ecd3527fa9a677/` → redirect `tracker.horacredit.ro` ✓
+- Ambele link-uri testate: HTTP 302, cookie-uri Admitad setate corect (publisher_id=2523858)
+- Ambele butoane au `target="_blank"` și `rel="noopener noreferrer"`
+
+---
+
+## [2026-04-16] — Actualizare link afiliat Axi-card
+
+### Fișiere modificate
+- `constants/affiliateLinks.ts` — link Axi-card actualizat de la `15618842` la `15618955`
+- Modificarea se propagă automat în `app/parteneri-ifn/page.tsx` și `app/necalificat/page.tsx` (ambele folosesc `AFFILIATE_LINKS.axiCard`)
+- Ambele butoane aveau deja `target="_blank"` și `rel="noopener noreferrer"` — nicio modificare necesară
+
+---
+
 ## [2026-04-16] — Logo-uri parteneri IFN (CreditPrime + Axi-card)
 
 ### Fișiere noi

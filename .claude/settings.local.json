@@ -5,7 +5,11 @@
       "Bash(npx tsc:*)",
       "Bash(npm run:*)",
       "Bash(sudo rm:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "WebSearch",
+      "WebFetch(domain:brandfetch.com)",
+      "WebFetch(domain:www.viaconto.ro)",
+      "WebFetch(domain:horacredit.ro)"
     ]
   }
 }

@@ -1,0 +1,9 @@
+<svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arrow/flow icon -->
+  <polygon points="4,8 14,14 4,20" fill="#F5821F"/>
+  <polygon points="10,8 20,14 10,20" fill="#F5821F" opacity="0.5"/>
+  <!-- "via" text -->
+  <text x="26" y="20" font-family="Arial, sans-serif" font-size="15" font-weight="400" fill="#192638" letter-spacing="0.3">via</text>
+  <!-- "conto" text bold -->
+  <text x="54" y="20" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#192638" letter-spacing="0.3">conto</text>
+</svg>

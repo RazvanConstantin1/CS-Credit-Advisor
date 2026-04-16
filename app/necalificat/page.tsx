@@ -18,6 +18,18 @@ const benefits = {
     "Flexibilitate totală la utilizare",
     "Rambursare în 2–5 ani",
   ],
+  viaConto: [
+    "Aprobare în ~15 minute",
+    "Dobândă 0% primele 30 zile (clienți noi)",
+    "Plătești doar suma utilizată",
+    "Linie de credit refolosibilă",
+  ],
+  horaCredit: [
+    "Dobândă 0% primele 7 zile (clienți noi)",
+    "Banii pe card în 30 de minute",
+    "Fără garanții imobiliare",
+    "Proces 100% online",
+  ],
 };
 
 function IFNCard({
@@ -186,6 +198,34 @@ export default function NecalificatPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <IFNCard
+              title="Hora Credit"
+              badge="🎯 Fără garanții"
+              badgeColor="blue"
+              description="Credit până la 5.000 lei fără garanții. Banii pe card în 30 de minute, dobândă 0% primele 7 zile."
+              benefitsList={benefits.horaCredit}
+              ctaLabel="Aplică la Hora Credit →"
+              href={AFFILIATE_LINKS.horaCredit}
+              disclaimer="*Serviciu oferit de Hora Credit, independent de CS Credit Advisor"
+              ifnKey="Hora Credit"
+              logo="/partners/horacredit-logo.svg"
+              logoWidth={140}
+              logoHeight={28}
+            />
+            <IFNCard
+              title="Via Conto"
+              badge="⚡ Aprobare în 15 minute"
+              badgeColor="green"
+              description="Linie de credit online până la 4.000 lei. Aprobare în ~15 minute, dobândă 0% primele 30 zile."
+              benefitsList={benefits.viaConto}
+              ctaLabel="Aplică la Via Conto →"
+              href={AFFILIATE_LINKS.viaConto}
+              disclaimer="*Serviciu oferit de Via Conto, independent de CS Credit Advisor"
+              ifnKey="Via Conto"
+              logo="/partners/viaconto-logo.svg"
+              logoWidth={140}
+              logoHeight={28}
+            />
             <IFNCard
               title="CreditPrime"
               badge="✅ Acceptă și istoric negativ"
