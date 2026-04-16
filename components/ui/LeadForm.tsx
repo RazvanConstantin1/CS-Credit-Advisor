@@ -101,6 +101,12 @@ export default function LeadForm({
         1, "employmentStatus",
         false,
       );
+    else if (value === "Angajat part-time")
+      disqualify(
+        "Angajarea part-time nu îndeplinește criteriile băncilor partenere, însă există soluții IFN potrivite pentru profilul tău.",
+        1, "employmentStatus",
+        "/necalificat",
+      );
   };
 
   const handleAgeGroupChange = (value: string) => {
@@ -329,6 +335,7 @@ export default function LeadForm({
               <option value="Angajat normă întreagă">
                 Angajat normă întreagă
               </option>
+              <option value="Angajat part-time">Angajat part-time</option>
               <option value="Pensionar">Pensionar</option>
               <option value="Neangajat / Fără venit stabil">
                 Neangajat / Fără venit stabil
