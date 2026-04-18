@@ -109,7 +109,7 @@ function MobileFormCard() {
       <p className="text-muted text-[12px] text-center mb-5">
         Te contactăm în maxim 24h
       </p>
-      <LeadForm formId="hero-mobile" compact />
+      <LeadForm formId="hero-mobile" />
     </div>
   );
 }
