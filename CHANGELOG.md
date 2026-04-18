@@ -6,6 +6,15 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-18] — Fix mobile: toate câmpurile formularului vizibile pe mobil
+
+### Fișiere modificate
+- `components/sections/Hero.tsx` — eliminat `compact={true}` din MobileFormCard; acum câmpurile Email și Mențiuni Suplimentare sunt vizibile și pe mobil (identic cu desktop)
+- `.gitignore` — fix: fișierul conținea comenzi shell în loc de patterns; corectat la format standard
+- `.next/` — eliminat din git tracking (acum corect ignorat)
+
+---
+
 ## [2026-04-16] — Adăugare parteneri IFN noi: Via Conto + Hora Credit
 
 ### Fișiere noi
