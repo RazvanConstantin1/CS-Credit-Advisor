@@ -9,7 +9,11 @@
       "WebSearch",
       "WebFetch(domain:brandfetch.com)",
       "WebFetch(domain:www.viaconto.ro)",
-      "WebFetch(domain:horacredit.ro)"
+      "WebFetch(domain:horacredit.ro)",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
