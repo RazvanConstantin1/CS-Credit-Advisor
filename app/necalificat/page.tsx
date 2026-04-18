@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -134,7 +134,7 @@ function IFNCard({
   );
 }
 
-export default function NecalificatPage() {
+function NecalificatContent() {
   const searchParams = useSearchParams();
   const isLocalityReject = searchParams.get("reason") === "locality";
 
@@ -307,5 +307,13 @@ export default function NecalificatPage() {
         </p>
       </footer>
     </div>
+  );
+}
+
+export default function NecalificatPage() {
+  return (
+    <Suspense fallback={null}>
+      <NecalificatContent />
+    </Suspense>
   );
 }
