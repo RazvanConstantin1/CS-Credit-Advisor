@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { AFFILIATE_LINKS } from "@/constants/affiliateLinks";
 
 const benefits = {
@@ -134,13 +135,16 @@ function IFNCard({
 }
 
 export default function NecalificatPage() {
+  const searchParams = useSearchParams();
+  const isLocalityReject = searchParams.get("reason") === "locality";
+
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).fbq?.("track", "ViewContent", {
-      content_name: "Disqualified — IFN Redirect",
+      content_name: isLocalityReject ? "Disqualified — Locality" : "Disqualified — IFN Redirect",
       content_category: "Financial Services",
     });
-  }, []);
+  }, [isLocalityReject]);
 
   return (
     <div className="min-h-screen bg-[#F8F9FA] flex flex-col">
@@ -167,14 +171,16 @@ export default function NecalificatPage() {
 
         {/* ── Secțiunea descalificare ── */}
         <section className="text-center flex flex-col items-center gap-4">
-          <div className="text-5xl">😔</div>
+          <div className="text-5xl">{isLocalityReject ? "📍" : "😔"}</div>
           <h1 className="font-playfair text-[26px] sm:text-[32px] font-bold text-navy leading-snug max-w-lg">
-            Ne pare rău, momentan nu te putem ajuta cu un credit bancar
+            {isLocalityReject
+              ? "Momentan nu ne desfășurăm activitatea în zona dvs."
+              : "Ne pare rău, momentan nu te putem ajuta cu un credit bancar"}
           </h1>
           <p className="text-[15px] text-charcoal leading-relaxed max-w-md">
-            Pe baza informațiilor furnizate, profilul tău nu îndeplinește criteriile
-            băncilor partenere. Nu este o judecată — e pur și simplu politica lor de
-            risc. Dar asta nu înseamnă că ești fără opțiuni.
+            {isLocalityReject
+              ? "Serviciile noastre de brokeraj sunt disponibile în București și localitățile limitrofe. Însă partenerii noștri IFN operează 100% online — poți aplica din orice localitate din România."
+              : "Pe baza informațiilor furnizate, profilul tău nu îndeplinește criteriile băncilor partenere. Nu este o judecată — e pur și simplu politica lor de risc. Dar asta nu înseamnă că ești fără opțiuni."}
           </p>
           <Link
             href="/"

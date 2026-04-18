@@ -56,10 +56,21 @@ export default function LeadForm({
   const [netIncome, setNetIncome] = useState("");
 
   // Step 3
+  const [locality, setLocality] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
+
+  const handleLocalityChange = (value: string) => {
+    setLocality(value);
+    if (value === "Altă localitate / Alt județ")
+      disqualify(
+        "Ne pare rău, dar momentan ne desfășurăm activitatea doar în București și localitățile limitrofe. Poți accesa în continuare soluțiile noastre IFN partenere — acestea se completează 100% online, indiferent de localitate.",
+        3, "locality",
+        "/necalificat?reason=locality",
+      );
+  };
 
   const inputBase = [
     "w-full rounded-lg px-3.5 py-3 text-sm outline-none transition-all duration-200 font-dm border-[1.5px]",
@@ -159,7 +170,7 @@ export default function LeadForm({
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) return;
+    if (!locality || !name || !phone) return;
     if (!gdprConsent) {
       setErrorMsg("Trebuie să accepți prelucrarea datelor pentru a continua.");
       return;
@@ -172,6 +183,7 @@ export default function LeadForm({
         nume: name,
         numar_de_telefon: phone,
         email: email || null,
+        localitate: locality,
         statut_angajare: employmentStatus,
         grupa_varsta: ageGroup,
         vechime: jobSeniority,
@@ -234,13 +246,16 @@ export default function LeadForm({
   }
 
   if (rejected) {
+    const isLocalityReject = rejectedField === "locality";
     return (
       <div className="flex flex-col items-center justify-center py-10 text-center gap-3 px-4">
-        <div className="text-5xl mb-2">❌</div>
+        <div className="text-5xl mb-2">{isLocalityReject ? "📍" : "❌"}</div>
         <h4
           className={`font-playfair text-xl font-bold ${dark ? "text-white" : "text-navy"}`}
         >
-          Cerere neeligibilă
+          {isLocalityReject
+            ? "Nu ne desfășurăm activitatea în zona dvs."
+            : "Cerere neeligibilă"}
         </h4>
         <p
           className={`text-sm leading-relaxed max-w-xs ${dark ? "text-white/60" : "text-muted"}`}
@@ -256,11 +271,12 @@ export default function LeadForm({
             else if (rejectedField === "jobSeniority") setJobSeniority("");
             else if (rejectedField === "creditStatus") setCreditStatus("");
             else if (rejectedField === "debtRatio") setDebtRatio("");
+            else if (rejectedField === "locality") setLocality("");
             setStep(rejectedStep);
           }}
           className={`mt-2 text-[12px] underline cursor-pointer ${dark ? "text-white/50 hover:text-white/80" : "text-muted hover:text-navy"} transition-colors`}
         >
-          Modifică selecția
+          {isLocalityReject ? "Modifică localitatea" : "Modifică selecția"}
         </button>
       </div>
     );
@@ -521,6 +537,68 @@ export default function LeadForm({
       {/* ── Step 3: Date de contact ── */}
       {step === 3 && (
         <div className="space-y-3.5">
+          <div>
+            <label className={labelClass}>
+              Localitatea ta <span className="text-gold">*</span>
+            </label>
+            <select
+              value={locality}
+              onChange={(e) => handleLocalityChange(e.target.value)}
+              required
+              className={`${inputBase} custom-select cursor-pointer`}
+            >
+              <option value="" disabled>Selectează localitatea...</option>
+              <optgroup label="București">
+                <option value="București - Sector 1">București - Sector 1</option>
+                <option value="București - Sector 2">București - Sector 2</option>
+                <option value="București - Sector 3">București - Sector 3</option>
+                <option value="București - Sector 4">București - Sector 4</option>
+                <option value="București - Sector 5">București - Sector 5</option>
+                <option value="București - Sector 6">București - Sector 6</option>
+              </optgroup>
+              <optgroup label="Ilfov (localități limitrofe)">
+                <option value="Voluntari">Voluntari</option>
+                <option value="Otopeni">Otopeni</option>
+                <option value="Popești-Leordeni">Popești-Leordeni</option>
+                <option value="Pantelimon">Pantelimon</option>
+                <option value="Chitila">Chitila</option>
+                <option value="Chiajna">Chiajna</option>
+                <option value="Bragadiru">Bragadiru</option>
+                <option value="Măgurele">Măgurele</option>
+                <option value="Jilava">Jilava</option>
+                <option value="Buftea">Buftea</option>
+                <option value="Mogoșoaia">Mogoșoaia</option>
+                <option value="Tunari">Tunari</option>
+                <option value="Afumați">Afumați</option>
+                <option value="Brănești">Brănești</option>
+                <option value="Cernica">Cernica</option>
+                <option value="Corbeanca">Corbeanca</option>
+                <option value="Cornetu">Cornetu</option>
+                <option value="1 Decembrie">1 Decembrie</option>
+                <option value="Ciorogârla">Ciorogârla</option>
+                <option value="Clinceni">Clinceni</option>
+                <option value="Copăceni">Copăceni</option>
+                <option value="Dărăști-Ilfov">Dărăști-Ilfov</option>
+                <option value="Dascălu">Dascălu</option>
+                <option value="Dobroești">Dobroești</option>
+                <option value="Domneşti">Domneşti</option>
+                <option value="Găneasa">Găneasa</option>
+                <option value="Glina">Glina</option>
+                <option value="Grădiştea">Grădiştea</option>
+                <option value="Gruiu">Gruiu</option>
+                <option value="Moara Vlăsiei">Moara Vlăsiei</option>
+                <option value="Nuci">Nuci</option>
+                <option value="Periş">Periş</option>
+                <option value="Petrăchioaia">Petrăchioaia</option>
+                <option value="Snagov">Snagov</option>
+                <option value="Ştefăneştii de Jos">Ştefăneştii de Jos</option>
+                <option value="Vidra">Vidra</option>
+                <option value="Oltenița (jud. Călărași)">Oltenița (jud. Călărași)</option>
+              </optgroup>
+              <option value="Altă localitate / Alt județ">Altă localitate / Alt județ</option>
+            </select>
+          </div>
+
           <div>
             <label className={labelClass}>
               Nume Complet <span className="text-gold">*</span>
