@@ -56,7 +56,25 @@ body {
   appearance: none;
 }
 
-/* Fade-in animation for intersection observer */
+/* CSS-only scroll fade-in — no JS required */
+@supports (animation-timeline: view()) {
+  .fade-in-view {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeInView 0.6s ease forwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 25%;
+  }
+}
+
+@keyframes fadeInView {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Legacy JS-driven class (FAQ, Calculator still use it) */
 .fade-in-section {
   opacity: 0;
   transform: translateY(28px);
