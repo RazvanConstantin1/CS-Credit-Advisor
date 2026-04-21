@@ -6,6 +6,23 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-21] — Faza 1 Performance: PageSpeed optimization (branch perf/lighthouse-score)
+
+### Obiectiv
+PageSpeed mobil de la 60 → minim 85. FCP sub 1,8s, LCP sub 2,5s.
+
+### Modificări
+- `app/layout.tsx` — migrare fonturi de la Google Fonts extern la `next/font/google` (self-hosted, preload automat); eliminat `<link>` și `<link rel=preconnect>` către fonts.googleapis.com
+- `app/globals.css` — eliminat `@import url(fonts.googleapis.com)` duplicat; adăugat CSS-only scroll animation via `animation-timeline: view()`
+- `components/ui/FadeIn.tsx` — convertit din Client Component (IntersectionObserver JS) în Server Component CSS-only; elimină JS din toate secțiunile statice
+- `components/sections/Header.tsx` — adăugat `priority` pe logo (above-the-fold LCP candidate)
+- `components/sections/Testimonials.tsx` — adăugat `sizes="40px"` și `quality={75}` pe avatare; fix ghilimele escapate
+- `next.config.mjs` — adăugat cache headers `max-age=31536000, immutable` pentru assets și `_next/static`; integrat `@next/bundle-analyzer`
+- `.eslintrc.json` — creat configurare ESLint `next/core-web-vitals`
+- `app/necalificat/page.tsx`, `app/parteneri-ifn/page.tsx`, `components/ui/LeadForm.tsx` — eliminat comentarii eslint-disable pentru plugin TypeScript neinstalat
+
+---
+
 ## [2026-04-18] — Fix mobile: toate câmpurile formularului vizibile pe mobil
 
 ### Fișiere modificate
