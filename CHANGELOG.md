@@ -6,6 +6,16 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-22] — Fix formular: disqualificare neangajat, grad îndatorare, venit numeric
+
+### Probleme rezolvate
+- `disqualify()` folosea `router.push()` care eșua silențios — înlocuit cu `window.location.href` (redirect garantat)
+- Câmpul venit net era dropdown cu categorii (`"3.000 – 5.000 lei"`) când `hasActiveLoans === "nu"` — `parseInt("3.000 – 5.000 lei")` returna `3`, calcul incorect
+- La schimbarea radio "Da/Nu credite active", `netIncome` nu se reseta — valoarea veche din dropdown contamina calculul
+- Acum: câmp venit mereu `<input type="number">` → calcul grad îndatorare exact (`payments / income > 0.45`)
+
+---
+
 ## [2026-04-21] — Faza 2 Form Refactor (branch feat/form-refactor)
 
 ### Obiectiv
