@@ -2,14 +2,8 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import { ShieldCheck, Loader2, ChevronRight, ChevronLeft } from "lucide-react";
-import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-);
 
 interface LeadFormProps {
   dark?: boolean;
@@ -177,6 +171,11 @@ export default function LeadForm({
     setErrorMsg("");
 
     try {
+      const { createClient } = await import("@supabase/supabase-js");
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      );
       const { error } = await supabase.from("leads").insert({
         nume: name,
         numar_de_telefon: phone,
