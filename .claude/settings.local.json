@@ -16,7 +16,8 @@
       "Bash(git push *)",
       "Bash(git checkout *)",
       "Bash(npm install *)",
-      "Bash(chmod -R u+w /Users/razvanconstantin/Desktop/cs-credit-advisor/.next)"
+      "Bash(chmod -R u+w /Users/razvanconstantin/Desktop/cs-credit-advisor/.next)",
+      "WebFetch(domain:pagespeed.web.dev)"
     ]
   }
 }
