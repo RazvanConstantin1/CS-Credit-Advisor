@@ -62,6 +62,7 @@ export default function Header() {
                 width={54}
                 height={54}
                 className="block"
+                priority
               />
             </div>
             <div className="flex flex-col leading-none">
