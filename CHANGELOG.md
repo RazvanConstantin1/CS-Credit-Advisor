@@ -6,6 +6,17 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-21] — Faza 1 Performance: runda 2 (după măsurare pe producție)
+
+### Rezultate după runda 1 (baseline → runda 1)
+- Performance: 58 → 67, FCP: 3,9s → 2,5s, TBT: 380ms → 210ms, Render-blocking: 1.950ms → 150ms
+
+### Modificări runda 2
+- `components/sections/Hero.tsx` — eliminat `animate-fade-up` / `animate-fade-up-delay` din toate elementele above-fold (MobileFormCard, h1, desktop form); LCP candidate nu mai pornesc cu `opacity:0`
+- `components/ui/LeadForm.tsx` — mutat `import createClient from @supabase/supabase-js` la lazy `import()` în `handleSubmit`; First Load JS scade de la 162kB la 111kB (−51kB)
+
+---
+
 ## [2026-04-21] — Faza 1 Performance: PageSpeed optimization (branch perf/lighthouse-score)
 
 ### Obiectiv
