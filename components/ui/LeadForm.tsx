@@ -590,6 +590,10 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
                 }}
                 onBlur={() => {
                   if (!form3.getValues("locality") && localityInput) {
+                    if (!LOCALITIES.includes(localityInput)) {
+                      disqualify("locality", "/necalificat?reason=locality");
+                      return;
+                    }
                     form3.setValue("locality", localityInput, { shouldValidate: true });
                     setLocalityFreeText(true);
                   }
