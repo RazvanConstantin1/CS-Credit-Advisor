@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ShieldCheck, Loader2, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 // ── Zod schemas ───────────────────────────────────────────────────────────────
 
@@ -100,7 +99,6 @@ const STEPS = ["Eligibilitate", "Detalii", "Contact"];
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function LeadForm({ dark = false, compact = false, formId }: LeadFormProps) {
-  const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -129,7 +127,12 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const [netIncome, setNetIncome] = useState("");
 
   const canProceedStep1 = !!(employmentStatus && ageGroup && jobSeniority && creditStatus);
-  const canProceedStep2 = !!(hasActiveLoans && loanType && netIncome);
+  const canProceedStep2 = !!(
+    hasActiveLoans &&
+    loanType &&
+    netIncome &&
+    (hasActiveLoans === "nu" || totalMonthlyPayments)
+  );
 
   // Step 3 — react-hook-form only here for blur validation
   const form3 = useForm<Step3Data>({
@@ -223,14 +226,14 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const disqualify = (reason: string, redirectTo: string | false = "/necalificat") => {
     (window as any).gtag?.("event", "lead_submitted_unqualified", { form_id: formId, reason, lead_source: leadSource });
     (window as any).fbq?.("track", "Lead", { content_name: `Disqualified — ${reason}`, content_category: "IFN Redirect" });
-    if (redirectTo) router.push(redirectTo);
+    if (redirectTo) window.location.href = redirectTo;
   };
 
   // ── Step 1 handlers ─────────────────────────────────────────────────────────
 
   const onEmploymentChange = (value: string) => {
     setEmploymentStatus(value);
-    if (value === "Neangajat / Fără venit stabil") disqualify("employment_status", false);
+    if (value === "Neangajat / Fără venit stabil") disqualify("employment_status", "/necalificat");
     else if (value === "Angajat part-time") disqualify("employment_status", "/necalificat");
   };
 
@@ -254,16 +257,9 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
 
   const checkDebtRatio = (): boolean => {
     if (hasActiveLoans !== "da") return true;
-    const incomeMap: Record<string, number> = {
-      "Salariu minim pe economie": 3300,
-      "3.000 – 5.000 lei": 4000,
-      "5.000 – 7.000 lei": 6000,
-      "7.000 – 10.000 lei": 8500,
-      "Peste 10.000 lei": 12000,
-    };
-    const income = incomeMap[netIncome] || 0;
+    const income = parseInt(netIncome || "0", 10);
     const payments = parseInt(totalMonthlyPayments || "0", 10);
-    if (income > 0 && payments / income > 0.4) {
+    if (income > 0 && payments / income > 0.45) {
       disqualify("grad_indatorare", "/parteneri-ifn?reason=grad_indatorare");
       return false;
     }
@@ -354,8 +350,8 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
         </h4>
         <p className={`text-sm leading-relaxed max-w-xs ${dark ? "text-white/60" : "text-muted"}`}>
           {slot === "Nu contează / cât mai repede"
-            ? "Te contactăm cât mai curând. Vei primi SMS de confirmare în câteva minute."
-            : `Perfect! Te sunăm ${slot.toLowerCase()}. Vei primi SMS de confirmare în câteva minute.`}
+            ? "Te contactăm cât mai curând posibil."
+            : `Perfect! Te sunăm ${slot.toLowerCase()}.`}
         </p>
       </div>
     );
@@ -499,7 +495,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
                         : dark ? "border-white/20 text-white/60 hover:border-white/40" : "border-[#e0e4ea] text-muted hover:border-gold/40"
                     }`}
                   >
-                    <input type="radio" className="sr-only" value={val} checked={hasActiveLoans === val} onChange={() => setHasActiveLoans(val)} />
+                    <input type="radio" className="sr-only" value={val} checked={hasActiveLoans === val} onChange={() => { setHasActiveLoans(val); setNetIncome(""); setTotalMonthlyPayments(""); }} />
                     {val === "da" ? "Da" : "Nu"}
                   </label>
                 ))}
@@ -540,19 +536,22 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
             </div>
 
             <div>
-              <label className={labelClass}>Venit Net <span className="text-gold">*</span></label>
-              <select
-                value={netIncome}
-                onChange={(e) => setNetIncome(e.target.value)}
-                className={`${inputBase} custom-select cursor-pointer`}
-              >
-                <option value="" disabled>Selectează venitul net...</option>
-                <option value="Salariu minim pe economie">Salariu minim pe economie</option>
-                <option value="3.000 – 5.000 lei">3.000 – 5.000 lei</option>
-                <option value="5.000 – 7.000 lei">5.000 – 7.000 lei</option>
-                <option value="7.000 – 10.000 lei">7.000 – 10.000 lei</option>
-                <option value="Peste 10.000 lei">Peste 10.000 lei</option>
-              </select>
+              <label className={labelClass}>
+                Venit Net Lunar <span className="text-gold">*</span>
+              </label>
+              <div className="relative">
+                <input
+                  type="number"
+                  min="1"
+                  placeholder="ex: 4500"
+                  value={netIncome}
+                  onChange={(e) => setNetIncome(e.target.value)}
+                  className={`${inputBase} pr-10`}
+                />
+                <span className={`absolute right-3.5 top-1/2 -translate-y-1/2 text-[12px] font-semibold pointer-events-none ${dark ? "text-white/40" : "text-muted"}`}>
+                  lei
+                </span>
+              </div>
             </div>
 
             <div className="flex gap-2">
