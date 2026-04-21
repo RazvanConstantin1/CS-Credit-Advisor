@@ -6,6 +6,32 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-21] — Faza 2 Form Refactor (branch feat/form-refactor)
+
+### Obiectiv
+Conversion rate formular de la 0,7% la minim 3%.
+
+### Modificări
+- `components/ui/LeadForm.tsx` — rescris complet cu react-hook-form + Zod:
+  - Înlocuit "Procent din Venitul Net pe Rate" cu Radio Da/Nu + câmp conditional suma rate; calcul automat grad îndatorare >40% → redirect /parteneri-ifn
+  - Autocomplete localitate: input text, debounce 300ms, max 8 sugestii, fallback free-text
+  - Progress bar gold animat (câmpuri completate/total) + "~X secunde rămase"
+  - Microcopy reasuring sub titlu pe fiecare pas
+  - Bifă verde pe pașii completați
+  - Câmp obligatoriu "Când preferi să fii sunat?" — grid 2×2 cu 4 intervale
+  - Validări on-blur: telefon regex, nume 2 cuvinte, email format, `aria-invalid`
+  - Erori roșii `#DC2626` cu icon `!` sub câmp
+  - Draft localStorage `cs_credit_form_draft`, expiră 24h, banner recovery la reintrare
+  - Buton "Sari peste câmpurile opționale și trimite"
+  - GA4: `lead_submitted_qualified` / `lead_submitted_unqualified` cu parametru `reason`
+  - Thank-you personalizat cu intervalul ales
+- `MIGRATION.md` — SQL pentru coloanele noi: `has_active_loans`, `total_monthly_payments`, `preferred_call_slot`, `is_qualified`, `disqualification_reason`
+
+### Înainte de merge
+Rulează SQL din `MIGRATION.md` în Supabase Dashboard → SQL Editor.
+
+---
+
 ## [2026-04-21] — Faza 1 Performance: runda 2 (după măsurare pe producție)
 
 ### Rezultate după runda 1 (baseline → runda 1)
