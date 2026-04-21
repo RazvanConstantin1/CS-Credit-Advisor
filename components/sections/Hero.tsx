@@ -21,12 +21,12 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-24 pt-28 sm:pt-28 lg:pt-20 flex flex-col lg:grid lg:grid-cols-[1fr_480px] lg:gap-16 xl:gap-20 items-start lg:items-center min-h-screen">
 
         {/* ── MOBILE: Form first (above headline) ── */}
-        <div className="lg:hidden w-full mb-8 animate-fade-up">
+        <div className="lg:hidden w-full mb-8">
           <MobileFormCard />
         </div>
 
         {/* ── LEFT: Content ── */}
-        <div className="animate-fade-up">
+        <div>
           {/* Free badge */}
           <div className="inline-flex items-center gap-2.5 bg-gold/10 border border-gold/30 text-gold px-4 py-2 rounded-full text-[11px] font-semibold tracking-[1.5px] uppercase mb-7">
             <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse2" />
@@ -75,7 +75,7 @@ export default function Hero() {
         </div>
 
         {/* ── RIGHT: Form (desktop only) ── */}
-        <div className="hidden lg:block animate-fade-up-delay self-center">
+        <div className="hidden lg:block self-center">
           <DesktopFormCard />
         </div>
       </div>
