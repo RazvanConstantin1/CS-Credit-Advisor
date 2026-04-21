@@ -83,7 +83,7 @@ export default function Testimonials() {
               <div className="group h-full bg-white/5 border border-white/10 rounded-2xl p-7 relative hover:bg-navy-light/60 hover:border-gold/30 hover:-translate-y-1 transition-all duration-300">
                 {/* Quote mark */}
                 <span className="absolute top-4 left-5 font-playfair text-[4rem] text-gold/20 leading-none select-none">
-                  "
+                  &ldquo;
                 </span>
 
                 {/* Stars */}

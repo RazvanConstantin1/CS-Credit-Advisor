@@ -61,12 +61,10 @@ function IFNCard({
   logoHeight: number;
 }) {
   const handleClick = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).fbq?.("track", "Lead", {
       content_name: ifnKey,
       content_category: "IFN Affiliate",
     });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).gtag?.("event", "affiliate_click", {
       affiliate_name: ifnKey,
       page: "necalificat",
@@ -139,7 +137,6 @@ function NecalificatContent() {
   const isLocalityReject = searchParams.get("reason") === "locality";
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).fbq?.("track", "ViewContent", {
       content_name: isLocalityReject ? "Disqualified — Locality" : "Disqualified — IFN Redirect",
       content_category: "Financial Services",

@@ -88,14 +88,12 @@ export default function LeadForm({
     setRejectedStep(fromStep);
     setRejectedField(field);
     setRejected(true);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).gtag?.("event", "lead_rejected", {
       form_id: formId,
       rejection_reason: field,
       lead_source: leadSource,
     });
     if (redirectTo) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).fbq?.("track", "Lead", {
         content_name: "Disqualified — " + field,
         content_category: "IFN Redirect",
@@ -209,7 +207,6 @@ export default function LeadForm({
         );
       } else {
         setSubmitted(true);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (window as any).gtag?.("event", "generate_lead", {
           form_id: formId,
           loan_type: loanType,

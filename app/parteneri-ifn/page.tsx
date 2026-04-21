@@ -208,7 +208,6 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 export default function ParteneriIFNPage() {
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).fbq?.("track", "ViewContent", {
       content_name: "IFN Partners Page",
       content_category: "Financial Services",
@@ -216,12 +215,10 @@ export default function ParteneriIFNPage() {
   }, []);
 
   const handleAffiliateClick = (ifnKey: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).fbq?.("track", "Lead", {
       content_name: ifnKey,
       content_category: "IFN Affiliate",
     });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).gtag?.("event", "affiliate_click", {
       affiliate_name: ifnKey,
       page: "parteneri-ifn",
