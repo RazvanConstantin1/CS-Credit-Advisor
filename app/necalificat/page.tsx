@@ -134,11 +134,13 @@ function IFNCard({
 
 function NecalificatContent() {
   const searchParams = useSearchParams();
-  const isLocalityReject = searchParams.get("reason") === "locality";
+  const reason = searchParams.get("reason");
+  const isLocalityReject = reason === "locality";
+  const isNeangajat = reason === "neangajat";
 
   useEffect(() => {
     (window as any).fbq?.("track", "ViewContent", {
-      content_name: isLocalityReject ? "Disqualified — Locality" : "Disqualified — IFN Redirect",
+      content_name: isLocalityReject ? "Disqualified — Locality" : isNeangajat ? "Disqualified — No Income" : "Disqualified — IFN Redirect",
       content_category: "Financial Services",
     });
   }, [isLocalityReject]);
@@ -168,15 +170,19 @@ function NecalificatContent() {
 
         {/* ── Secțiunea descalificare ── */}
         <section className="text-center flex flex-col items-center gap-4">
-          <div className="text-5xl">{isLocalityReject ? "📍" : "😔"}</div>
+          <div className="text-5xl">{isLocalityReject ? "📍" : isNeangajat ? "🙏" : "😔"}</div>
           <h1 className="font-playfair text-[26px] sm:text-[32px] font-bold text-navy leading-snug max-w-lg">
             {isLocalityReject
               ? "Momentan nu ne desfășurăm activitatea în zona dvs."
+              : isNeangajat
+              ? "Ne pare rău, nu îți putem oferi o soluție în acest moment"
               : "Ne pare rău, momentan nu te putem ajuta cu un credit bancar"}
           </h1>
           <p className="text-[15px] text-charcoal leading-relaxed max-w-md">
             {isLocalityReject
               ? "Serviciile noastre de brokeraj sunt disponibile în București și localitățile limitrofe. Însă partenerii noștri IFN operează 100% online — poți aplica din orice localitate din România."
+              : isNeangajat
+              ? "Băncile și instituțiile financiare partenere solicită un venit stabil ca o condiție esențială de eligibilitate. Revino oricând după ce obții un loc de muncă — te vom ajuta cu plăcere."
               : "Pe baza informațiilor furnizate, profilul tău nu îndeplinește criteriile băncilor partenere. Nu este o judecată — e pur și simplu politica lor de risc. Dar asta nu înseamnă că ești fără opțiuni."}
           </p>
           <Link
@@ -188,7 +194,7 @@ function NecalificatContent() {
         </section>
 
         {/* ── Secțiunea IFN-uri alternative ── */}
-        <section className="flex flex-col gap-6">
+        {!isNeangajat && <section className="flex flex-col gap-6">
           <div className="text-center">
             <h2 className="font-playfair text-[24px] sm:text-[28px] font-bold text-navy mb-3">
               Există soluții alternative!
@@ -258,7 +264,7 @@ function NecalificatContent() {
               logoHeight={216}
             />
           </div>
-        </section>
+        </section>}
 
         {/* ── Secțiunea "Situația ta se poate schimba" ── */}
         <section className="bg-navy rounded-2xl px-6 sm:px-10 py-8 text-center flex flex-col items-center gap-4">
@@ -280,14 +286,14 @@ function NecalificatContent() {
         </section>
 
         {/* ── Disclaimer afiliere ── */}
-        <section className="bg-white border border-gray-200 rounded-xl px-5 py-4">
+        {!isNeangajat && <section className="bg-white border border-gray-200 rounded-xl px-5 py-4">
           <p className="text-[12px] text-muted leading-relaxed text-center">
             CS Credit Advisor prezintă aceste produse ca informație generală. Linkurile
             de mai sus sunt linkuri de afiliere — primim un comision dacă aplici și ești
             aprobat, fără niciun cost suplimentar pentru tine. CS Credit Advisor nu este
             responsabil pentru deciziile de creditare ale IFN-urilor partenere.
           </p>
-        </section>
+        </section>}
       </main>
 
       {/* Footer minimal */}

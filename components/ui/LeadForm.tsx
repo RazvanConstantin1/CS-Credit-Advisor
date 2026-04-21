@@ -233,7 +233,7 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
 
   const onEmploymentChange = (value: string) => {
     setEmploymentStatus(value);
-    if (value === "Neangajat / Fără venit stabil") disqualify("employment_status", "/necalificat");
+    if (value === "Neangajat / Fără venit stabil") disqualify("employment_status", "/necalificat?reason=neangajat");
     else if (value === "Angajat part-time") disqualify("employment_status", "/necalificat");
   };
 
