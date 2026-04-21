@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import { AFFILIATE_LINKS } from "@/constants/affiliateLinks";
@@ -206,13 +207,16 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-export default function ParteneriIFNPage() {
+function ParteneriIFNContent() {
+  const searchParams = useSearchParams();
+  const isGradIndatorare = searchParams.get("reason") === "grad_indatorare";
+
   useEffect(() => {
     (window as any).fbq?.("track", "ViewContent", {
-      content_name: "IFN Partners Page",
+      content_name: isGradIndatorare ? "Disqualified — Grad Indatorare" : "IFN Partners Page",
       content_category: "Financial Services",
     });
-  }, []);
+  }, [isGradIndatorare]);
 
   const handleAffiliateClick = (ifnKey: string) => {
     (window as any).fbq?.("track", "Lead", {
@@ -230,6 +234,25 @@ export default function ParteneriIFNPage() {
       <Header />
 
       <main className="flex-1 pt-[70px] sm:pt-[78px]">
+
+        {/* ── Banner grad îndatorare ── */}
+        {isGradIndatorare && (
+          <div className="bg-amber-50 border-b border-amber-200 px-4 py-5">
+            <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <span className="text-2xl flex-shrink-0">⚠️</span>
+              <div>
+                <p className="font-semibold text-[14px] text-amber-900 mb-1">
+                  Gradul tău de îndatorare depășește 45% din venitul net
+                </p>
+                <p className="text-[13px] text-amber-800 leading-relaxed">
+                  Băncile impun prin lege o limită a ratelor lunare de maxim 40–45% din venitul net.
+                  Profilul tău depășește acest prag, motiv pentru care nu ne putem implica în intermedierea unui credit bancar.
+                  <strong className="text-amber-900"> IFN-urile de mai jos au criterii mai flexibile</strong> și pot fi o soluție potrivită situației tale.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ── Hero ── */}
         <section className="bg-navy py-14 sm:py-20 px-4 sm:px-6 text-center">
@@ -477,5 +500,13 @@ export default function ParteneriIFNPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function ParteneriIFNPage() {
+  return (
+    <Suspense fallback={null}>
+      <ParteneriIFNContent />
+    </Suspense>
   );
 }
