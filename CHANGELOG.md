@@ -6,6 +6,15 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-23] — Simplificare câmp localitate în formular
+
+- Înlocuit autocomplete cu listă de localități cu 2 opțiuni radio: "București / Ilfov" (calificat) și "Altă localitate" (descalificat → `/necalificat?reason=locality`)
+- Eliminat state-ul `localityInput`, `localitySuggestions`, `localityFreeText`, ref-ul `localityRef`, funcția `selectLocality` și lista `LOCALITIES`
+- Eliminat cele 2 `useEffect`-uri aferente autocomplete-ului
+- Importul `useRef` eliminat
+
+---
+
 ## [2026-04-22] — Fix formular: disqualificare neangajat, grad îndatorare, venit numeric
 
 ### Probleme rezolvate

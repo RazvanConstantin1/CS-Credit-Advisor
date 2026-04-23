@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -35,19 +35,6 @@ const step3Schema = z.object({
 
 type Step3Data = z.infer<typeof step3Schema>;
 
-// ── Localities ────────────────────────────────────────────────────────────────
-
-const LOCALITIES = [
-  "București - Sector 1", "București - Sector 2", "București - Sector 3",
-  "București - Sector 4", "București - Sector 5", "București - Sector 6",
-  "Voluntari", "Otopeni", "Popești-Leordeni", "Pantelimon", "Chitila",
-  "Chiajna", "Bragadiru", "Măgurele", "Jilava", "Buftea", "Mogoșoaia",
-  "Tunari", "Afumați", "Brănești", "Cernica", "Corbeanca", "Cornetu",
-  "1 Decembrie", "Ciorogârla", "Clinceni", "Copăceni", "Dărăști-Ilfov",
-  "Dascălu", "Dobroești", "Domneşti", "Găneasa", "Glina", "Grădiştea",
-  "Gruiu", "Moara Vlăsiei", "Nuci", "Periş", "Petrăchioaia", "Snagov",
-  "Ştefăneştii de Jos", "Vidra", "Oltenița (jud. Călărași)",
-];
 
 const CALL_SLOTS = [
   "Mâine 10:00 - 12:00",
@@ -108,12 +95,6 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   const [showDraftBanner, setShowDraftBanner] = useState(false);
   const [draftData, setDraftData] = useState<Record<string, unknown> | null>(null);
 
-  // Locality autocomplete
-  const [localityInput, setLocalityInput] = useState("");
-  const [localitySuggestions, setLocalitySuggestions] = useState<string[]>([]);
-  const [localityFreeText, setLocalityFreeText] = useState(false);
-  const localityRef = useRef<HTMLDivElement>(null);
-
   // Step 1 state
   const [employmentStatus, setEmploymentStatus] = useState("");
   const [ageGroup, setAgeGroup] = useState("");
@@ -173,27 +154,6 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employmentStatus, ageGroup, jobSeniority, creditStatus, hasActiveLoans, totalMonthlyPayments, loanType, netIncome, step]);
 
-  // Close locality dropdown on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (localityRef.current && !localityRef.current.contains(e.target as Node))
-        setLocalitySuggestions([]);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
-
-  // Locality autocomplete debounce
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (localityInput.length < 2) { setLocalitySuggestions([]); return; }
-      setLocalitySuggestions(
-        LOCALITIES.filter((l) => l.toLowerCase().includes(localityInput.toLowerCase())).slice(0, 8)
-      );
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [localityInput]);
-
   // ── Restore draft ───────────────────────────────────────────────────────────
 
   const restoreDraft = () => {
@@ -216,7 +176,6 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
       preferredCallSlot: d.preferredCallSlot || "",
       gdprConsent: d.gdprConsent === "true" ? true : undefined,
     });
-    if (d.locality) { setLocalityInput(d.locality); }
     setStep(Number(d._step) || 1);
     setShowDraftBanner(false);
   };
@@ -264,16 +223,6 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
       return false;
     }
     return true;
-  };
-
-  // ── Locality helpers ────────────────────────────────────────────────────────
-
-  const selectLocality = (loc: string) => {
-    setLocalityInput(loc);
-    form3.setValue("locality", loc, { shouldValidate: true });
-    setLocalitySuggestions([]);
-    setLocalityFreeText(false);
-    if (loc === "Altă localitate / Alt județ") disqualify("locality", "/necalificat?reason=locality");
   };
 
   // ── Submit ──────────────────────────────────────────────────────────────────
@@ -577,54 +526,39 @@ export default function LeadForm({ dark = false, compact = false, formId }: Lead
         {/* ── Step 3 ── */}
         {step === 3 && (
           <div className="space-y-3.5">
-            {/* Locality autocomplete */}
-            <div ref={localityRef} className="relative">
-              <label className={labelClass}>Localitatea ta <span className="text-gold">*</span></label>
-              <input
-                type="text"
-                value={localityInput}
-                onChange={(e) => {
-                  setLocalityInput(e.target.value);
-                  setLocalityFreeText(false);
-                  form3.setValue("locality", "", { shouldValidate: false });
-                }}
-                onBlur={() => {
-                  if (!form3.getValues("locality") && localityInput) {
-                    if (!LOCALITIES.includes(localityInput)) {
-                      disqualify("locality", "/necalificat?reason=locality");
-                      return;
-                    }
-                    form3.setValue("locality", localityInput, { shouldValidate: true });
-                    setLocalityFreeText(true);
-                  }
-                }}
-                placeholder="Caută localitatea ta..."
-                aria-invalid={!!form3.formState.errors.locality}
-                className={`${inputBase} ${form3.formState.errors.locality ? inputError : ""}`}
-              />
-              {localitySuggestions.length > 0 && (
-                <ul className={`absolute z-20 w-full mt-1 rounded-lg border shadow-lg overflow-hidden ${dark ? "bg-navy border-white/20" : "bg-white border-[#e0e4ea]"}`}>
-                  {localitySuggestions.map((loc) => (
-                    <li key={loc}>
-                      <button type="button" onMouseDown={() => selectLocality(loc)}
-                        className={`w-full text-left px-3.5 py-2.5 text-[13px] transition-colors ${dark ? "text-white/80 hover:bg-white/10" : "text-navy hover:bg-gold/5"}`}>
-                        {loc}
-                      </button>
-                    </li>
-                  ))}
-                  <li>
-                    <button type="button" onMouseDown={() => selectLocality("Altă localitate / Alt județ")}
-                      className={`w-full text-left px-3.5 py-2.5 text-[12px] italic transition-colors ${dark ? "text-white/40 hover:bg-white/10" : "text-muted hover:bg-gold/5"}`}>
-                      Altă localitate / Alt județ
-                    </button>
-                  </li>
-                </ul>
-              )}
-              {localityFreeText && (
-                <p className={`text-[11px] mt-1 ${dark ? "text-white/40" : "text-muted"}`}>
-                  Localitatea nu e în listă — o confirmăm la apel.
-                </p>
-              )}
+            {/* Locality — 2 options */}
+            <div>
+              <label className={labelClass}>Zona ta <span className="text-gold">*</span></label>
+              <div className="flex gap-3">
+                {([
+                  { value: "București / Ilfov", label: "București / Ilfov" },
+                  { value: "Altă localitate", label: "Altă localitate" },
+                ] as const).map(({ value, label }) => {
+                  const selected = form3.watch("locality") === value;
+                  return (
+                    <label
+                      key={value}
+                      className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg border-[1.5px] cursor-pointer transition-all text-[14px] font-semibold ${
+                        selected
+                          ? "border-gold bg-gold/10 text-gold"
+                          : dark ? "border-white/20 text-white/60 hover:border-white/40" : "border-[#e0e4ea] text-muted hover:border-gold/40"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        className="sr-only"
+                        value={value}
+                        checked={selected}
+                        onChange={() => {
+                          form3.setValue("locality", value, { shouldValidate: true });
+                          if (value === "Altă localitate") disqualify("locality", "/necalificat?reason=locality");
+                        }}
+                      />
+                      {label}
+                    </label>
+                  );
+                })}
+              </div>
               <FieldError message={form3.formState.errors.locality?.message} />
             </div>
 
