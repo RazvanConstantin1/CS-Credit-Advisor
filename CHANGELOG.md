@@ -6,6 +6,14 @@ Format: `[DATA] — Descriere scurtă` urmată de detalii.
 
 ---
 
+## [2026-04-26] — Instalare TikTok Pixel
+
+- Adăugat TikTok Pixel (ID: `D7N18EBC77U9KU0AEJ6G`) în `app/layout.tsx`
+- Folosit componenta `Script` cu `strategy="afterInteractive"`, consistent cu Google Analytics și Meta Pixel
+- Eveniment `ttq.page()` se declanșează la fiecare navigare
+
+---
+
 ## [2026-04-23] — Simplificare câmp localitate în formular
 
 - Înlocuit autocomplete cu listă de localități cu 2 opțiuni radio: "București / Ilfov" (calificat) și "Altă localitate" (descalificat → `/necalificat?reason=locality`)
